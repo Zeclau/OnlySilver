@@ -3,6 +3,9 @@
 /build
 /run
 /gradle.properties
+gradlew
+gradle/
+gradlew.bat
 
 # Eclipse
 /.settings
