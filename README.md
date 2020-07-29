@@ -6,15 +6,8 @@ A mod which primarily implements the old silver from SimpleOres. New features ma
 
 ## Add-ons and Compatibility
 
-OnlySilver API is accessible under the `zotmc.onlysilver.api` package. Please note that any class that is not placed under this package is considered internal and may be changed from time to time.
-
-You may access the `dev` jar together with source code from Bintray's *JCenter*, by adding the following to the `build.gradle` of your projects:
-
-```groovy
-dependencies {
-  compile 'io.github.zot201.onlysilver:onlysilver:2.2.7-1.10.2:dev'
-}
-```
+OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with
+a required dependency of SimpleOres.
 
 ## Features
 
@@ -58,23 +51,26 @@ dependencies {
     * Immune to poison
     * Crafted from a silver block and a pumpkin / lantern
       * Dispenser support is *mandatory*
-    * Aspect definition for Thaumcraft
   * Skeleton Compatibility for Silver Bow
+    * HIGHLY UNLIKELY THIS WILL BE IMPLEMENTED.
     * Enable them to shoot with silver bows
     * Dedicated handling of ranged knockback effect
       * Silver Aura boosts maybe handled explicitly as well
   * Equipment Spawning on Mobs in Vanilla Fashion
+    * HIGHLY UNLIKELY THIS WILL BE IMPLEMENTED.
     * Armor on any `EntityLiving` that calls `setEquipmentBasedOnDifficulty` on its spawn
     * A Sword or a bow on skeletons
 
 * Ore Generation
 
-  * Settings is stored per world, more specifically, in `WorldInfo#getAdditionalProperty`
-  * Customizable at Mod Options or at 'Customized' World Type
+  * Customizable in common Options.
 
 * Mod Options
 
-  * High customizability
-  * Intuitive configuration UI
-  * Capability to apply settings in-game without restart
-  * Send and receive settings in multiplayer games
+  * customizable ore generation parameters.
+  * ????
+
+## LICENSE
+
+  * Zot201's original mod was licensed under Apache License 2.0.
+  * Sinhika's port has been re-licensed under the compatible Lesser GNU Public License 3.0, found in the file 'lgpl.txt' in this repository.
