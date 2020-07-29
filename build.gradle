@@ -23,7 +23,7 @@ def getVersionAppendage() {
 }
 
 version = "${version_minecraft}-${version_mod}." + getVersionAppendage()
-group = 'mod.zot201.onlysilver'
+group = 'mod.zotmc.onlysilver'
 archivesBaseName = 'onlysilver'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
