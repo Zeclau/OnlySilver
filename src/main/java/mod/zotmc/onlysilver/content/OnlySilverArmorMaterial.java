@@ -1,5 +1,6 @@
 package mod.zotmc.onlysilver.content;
 
+import mod.zotmc.onlysilver.init.ModItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 
 public enum OnlySilverArmorMaterial implements IArmorMaterial
 {
-    SILVER ("simplemod:foo", 8, new int [] {1,2,3,2}, 8,
+    SILVER ("onlysilver:silver", 8, new int [] {1,2,3,2}, 8,
             SoundEvents.ITEM_ARMOR_EQUIP_CHAIN , 0.0F,
             ()-> { return Ingredient.fromItems(ModItems.silver_ingot.get());} );
 
