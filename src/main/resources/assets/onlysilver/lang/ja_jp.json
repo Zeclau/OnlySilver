@@ -1,0 +1,32 @@
+{
+    "block.onlysilver.silver_ore": "銀鉱石",
+    "block.onlysilver.silver_block": "銀ブロック",
+
+    "item.onlysilver.silver_ingot": "銀インゴット",
+    "item.onlysilver.silver_rod": "銀ロッド",
+
+    "item.onlysilver.silver_pick": "銀のツルハシ",
+    "item.onlysilver.silver_axe": "銀の斧",
+    "item.onlysilver.silver_shovel": "銀のシャベル",
+    "item.onlysilver.silver_sword": "銀の剣",
+    "item.onlysilver.silver_hoe": "銀のクワ",
+    "item.onlysilver.silver_bow": "銀の弓",
+    "item.onlysilver.silver_helm": "銀のヘルメット",
+    "item.onlysilver.silver_chestplate": "銀のチェストプレート",
+    "item.onlysilver.silver_leggings": "銀のレギンス",
+    "item.onlysilver.silver_boots": "銀のブーツ",
+
+    "enchantment.onlysilver.silver_aura": "シルバーオーラ",
+    "enchantment.onlysilver.incantation": "呪文",
+
+    "entity.onlysilver.silver_golem": "シルバーゴーレム",
+
+    "achievement.silver_bow_ach": "新たな…弓？",
+    "achievement.silver_bow_ach.desc": "魔力の秘めた新たな弓を鍛えあげる",
+
+    "itemGroup.onlysilver": "銀",
+
+    "onlysilver.tooltip.knockback": "+ノックバック",
+
+    "onlysilver.custom.silver_ore": "%s (OnlySilver)"
+}

@@ -1,0 +1,31 @@
+{
+    "_comment": "OnlySilver language file ru_RU",
+    "block.onlysilver.silver_ore": "Серебряная руда",
+    "block.onlysilver.silver_block": "Серебряный блок",
+
+    "item.onlysilver.silver_ingot": "Серебряный слиток",
+    "item.onlysilver.silver_rod": "Серебряный стержень",
+
+    "item.onlysilver.silver_pick": "Серебряная кирка",
+    "item.onlysilver.silver_axe": "Серебряный топор",
+    "item.onlysilver.silver_shovel": "Серебряная лопата",
+    "item.onlysilver.silver_sword": "Серебряный меч",
+    "item.onlysilver.silver_hoe": "Серебряная мотыга",
+    "item.onlysilver.silver_bow": "Серебряный лук",
+    "item.onlysilver.silver_helm": "Серебряный шлем",
+    "item.onlysilver.silver_chestplate": "Серебряный нагрудник",
+    "item.onlysilver.silver_leggings": "Серебряный поножи",
+    "item.onlysilver.silver_boots": "Серебряный ботинки",
+
+    "_comment": "enchantment.onlysilver.silverAura=Silver Aura",
+    "_comment": "enchantment.onlysilver.incantation=Incantation",
+
+    "_comment": "entity.onlysilver.silverGolem.name=Silver Golem",
+
+    "achievement.silver_bow_ach": "Это новый... Новый лук?",
+    "achievement.silver_bow_ach.desc": "Выковать новый лук с магическими способностями",
+
+    "itemGroup.onlysilver": "OnlySilver",
+
+    "onlysilver.tooltip.knockback": "+Отдача"
+}

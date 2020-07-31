@@ -1,0 +1,30 @@
+{
+    "block.onlysilver.silver_ore": "Mineral de Plata",
+    "block.onlysilver.silver_block": "Bloque de Plata",
+
+    "item.onlysilver.silver_ingot": "Lingote de Plata",
+    "item.onlysilver.silver_rod": "Vara de Plata",
+
+    "item.onlysilver.silver_pick": "Pico de Plata",
+    "item.onlysilver.silver_axe": "Hacha de Plata",
+    "item.onlysilver.silver_shovel": "Pala de Plata",
+    "item.onlysilver.silver_sword": "Espada de Plata",
+    "item.onlysilver.silver_hoe": "Azada de Plata",
+    "item.onlysilver.silver_bow": "Arco de Plata",
+    "item.onlysilver.silver_helm": "Casco de Plata",
+    "item.onlysilver.silver_chestplate": "Pechera de Plata",
+    "item.onlysilver.silver_leggings": "Pantalones de Plata",
+    "item.onlysilver.silver_boots": "Botas de Plata",
+
+    "_comment": "enchantment.onlysilver.silver_aura=Silver Aura",
+    "_comment": "enchantment.onlysilver.incantation=Incantation",
+
+    "entity.onlysilver.silver_golem": "Golem de Plata",
+
+    "achievement.silver_bow_ach": "Un Nuevo Tipo de Arco?!",
+    "achievement.silver_bow_ach.desc": "Has Creado un Nuevo Tipo de Arco con Propiedades Magicas",
+
+    "itemGroup.onlysilver": "OnlySilver",
+
+    "onlysilver.tooltip.knockback": "+Empuje"
+}
