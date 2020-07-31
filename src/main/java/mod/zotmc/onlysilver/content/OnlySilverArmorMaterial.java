@@ -14,8 +14,8 @@ import java.util.function.Supplier;
 
 public enum OnlySilverArmorMaterial implements IArmorMaterial
 {
-    SILVER ("onlysilver:silver", 8, new int [] {1,2,3,2}, 8,
-            SoundEvents.ITEM_ARMOR_EQUIP_CHAIN , 0.0F,
+    SILVER ("onlysilver:silver", 15, new int [] {3,4,5,3}, 20,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD , 0.0F,
             ()-> { return Ingredient.fromItems(ModItems.silver_ingot.get());} );
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};

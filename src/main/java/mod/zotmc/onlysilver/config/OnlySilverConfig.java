@@ -13,13 +13,16 @@ public class OnlySilverConfig implements ISimpleConfig
     public static OnlySilverConfig INSTANCE = new OnlySilverConfig();
     
     // general
+    public static boolean enableAuraEnchantment = false;
+    public static boolean enableIncantationEnchantment = false;
+    public static boolean buildSilverGolem = false;
     
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
     public static CountRangeConfig silver_cfg;
-    public static int silver_veinsize = 17;
+    public static int silver_veinsize = 5;
 
     // client-side
-    public static boolean makeBlockFlame = true;
+    //public static boolean makeBlockFlame = true;
     
     @Override
     public void clear()

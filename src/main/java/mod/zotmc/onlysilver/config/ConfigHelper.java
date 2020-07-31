@@ -7,12 +7,19 @@ public final class ConfigHelper
 {
     public static void bakeClient(final ModConfig config) 
     {
-        OnlySilverConfig.makeBlockFlame = ConfigHolder.CLIENT.clientMakeBlockFlame.get();
+        // OnlySilverConfig.makeBlockFlame = ConfigHolder.CLIENT.clientMakeBlockFlame.get();
     } // end bakeClient
 
     public static void bakeServer(final ModConfig config) 
     {
-        // general stuff
+        // general
+        OnlySilverConfig.buildSilverGolem  = ConfigHolder.SERVER.serverBuildSilverGolem.get();
+        
+        // enchantments
+        OnlySilverConfig.enableAuraEnchantment = ConfigHolder.SERVER.serverEnableAuraEnchantment.get();
+        OnlySilverConfig.enableIncantationEnchantment = ConfigHolder.SERVER.serverEnableIncantationEnchantment.get();
+        
+        // Ore generation stuff
         OnlySilverConfig.silver_veinsize = ConfigHolder.SERVER.serverSilverVeinSize.get();
         OnlySilverConfig.silver_cfg = 
                 new CountRangeConfig(ConfigHolder.SERVER.serverSilverVeinCount.get(),

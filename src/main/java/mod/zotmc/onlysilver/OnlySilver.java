@@ -17,7 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class OnlySilver
 {
     // modid 
-    public static final String MODID = "simplemod";
+    public static final String MODID = "onlysilver";
 
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();

@@ -11,26 +11,40 @@ public final class ServerConfig
     final ForgeConfigSpec.IntValue serverSilverBottomHeight;
     final ForgeConfigSpec.IntValue serverSilverMaxHeight;
 
+    final ForgeConfigSpec.BooleanValue serverEnableAuraEnchantment;
+    final ForgeConfigSpec.BooleanValue serverEnableIncantationEnchantment;
+    final ForgeConfigSpec.BooleanValue serverBuildSilverGolem;
+    
     ServerConfig(final ForgeConfigSpec.Builder builder)
     {
+        builder.push("General");
+        serverBuildSilverGolem = builder.comment("Can build silver golems? (NOT IMPLEMENTED YET)")
+                .translation(OnlySilver.MODID + "options.silver_golem_assembly")
+                .define("BuildSilverGolem", false);
+        builder.pop();
         builder.push("Ore Generation");
-        builder.push("Silver");
         serverSilverVeinSize = builder.comment("Silver ore vein size")
-                .translation(OnlySilver.MODID + "config.SilverVeinSize")
-                .defineInRange("SilverVeinSize",  17, 0, Integer.MAX_VALUE);
+                .translation(OnlySilver.MODID + "options.silver_vein_size")
+                .defineInRange("SilverVeinSize",  5, 0, Integer.MAX_VALUE);
         serverSilverVeinCount = builder.comment("Silver ore vein count per chunk")
-                .translation(OnlySilver.MODID + "config.SilverVeinCount")
-                .defineInRange("SilverVeinCount",  9, 0, Integer.MAX_VALUE);
+                .translation(OnlySilver.MODID + "options.silver_vein_count")
+                .defineInRange("SilverVeinCount",  8, 0, Integer.MAX_VALUE);
         serverSilverBottomHeight = builder
                 .comment("Silver ore minimum height")
-                .translation(OnlySilver.MODID + ".config.serverSilverBottomHeight")
-                .defineInRange("SilverBottomHeight", 0, 1, 127);
+                .translation(OnlySilver.MODID + ".options.silver_min_height")
+                .defineInRange("SilverBottomHeight", 0, 1, 255);
         serverSilverMaxHeight = builder
                 .comment("Silver ore maximum height")
-                .translation(OnlySilver.MODID + ".config.serverSilverMaxHeight")
-                .defineInRange("SilverMaxHeight", 128, 1, 128);
+                .translation(OnlySilver.MODID + ".options.silver_max_height")
+                .defineInRange("SilverMaxHeight", 42, 1, 255);
         builder.pop();
+        builder.push("Enchantments");
+        serverEnableAuraEnchantment = builder.comment("Silver Aura Enchantment enabled? (NOT YET IMPLEMENTED)")
+                .define("EnableSilverAura", false);
+        serverEnableIncantationEnchantment = builder.comment("Enable Incantation enchantment? (NOT YET IMPLEMENTED")
+                .define("EnableIncantation", false);
         builder.pop();
+        
     } // end ctor
 
 } // end-class

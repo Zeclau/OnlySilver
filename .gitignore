@@ -12,6 +12,7 @@ bin/
 /.settings
 /.classpath
 /.project
+*.launch
 
 # Intellij
 /.idea

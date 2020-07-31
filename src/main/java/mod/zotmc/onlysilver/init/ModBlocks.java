@@ -5,7 +5,6 @@ import mod.zotmc.onlysilver.OnlySilver;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,14 +29,13 @@ public final class ModBlocks
     // Ore Blocks
     public static final RegistryObject<OreBlock> silver_ore = BLOCKS.register("silver_ore",
             () -> new OreBlock(Block.Properties.create(Material.ROCK)
-                    .hardnessAndResistance( 1.7F, 3.0F)
+                    .hardnessAndResistance( 3.0F, 10.0F)
                     .harvestTool(ToolType.PICKAXE).harvestLevel(1)));
 
     // Metal Blocks
     public static final RegistryObject<SimpleMetalBlock> silver_block = BLOCKS.register("silver_block",
-            () -> new SimpleMetalBlock(Block.Properties.create(Material.IRON,
-                    MaterialColor.ORANGE_TERRACOTTA)
-                    .hardnessAndResistance(3.0F, 6.0F)
+            () -> new SimpleMetalBlock(Block.Properties.create(Material.IRON)
+                    .hardnessAndResistance(7.0F, 12.0F)
                     .harvestTool(ToolType.PICKAXE).harvestLevel(0)));
 
 }  // end class ModBlocks

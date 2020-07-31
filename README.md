@@ -6,10 +6,9 @@ A mod which primarily implements the old silver from SimpleOres. New features ma
 
 ## Add-ons and Compatibility
 
-OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with
-a required dependency of SimpleOres.
+OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a required dependency of SimpleOres.
 
-## Features
+## Features, aka TODO list
 
 * Base Items and Blocks
 

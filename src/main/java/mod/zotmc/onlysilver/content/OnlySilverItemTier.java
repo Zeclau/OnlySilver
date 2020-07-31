@@ -9,7 +9,7 @@ import net.minecraft.util.LazyValue;
 
 public enum OnlySilverItemTier implements IItemTier
 {
-   SILVER(1, 220, 3.5F, 1.0F, 8, ()->{ return Ingredient.fromItems( ModItems.silver_ingot.get()); });
+   SILVER(2, 226, 8.0F, 2.0F, 30, ()->{ return Ingredient.fromItems( ModItems.silver_ingot.get()); });
 
    private final int harvestLevel;
    private final int maxUses;
