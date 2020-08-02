@@ -1,6 +1,5 @@
 package mod.zotmc.onlysilver.init;
 
-import mod.alexndr.simpleores.init.ModTabGroups;
 import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.content.OnlySilverArmorMaterial;
 import mod.zotmc.onlysilver.content.OnlySilverItemTier;
