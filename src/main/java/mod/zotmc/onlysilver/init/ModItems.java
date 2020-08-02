@@ -1,8 +1,10 @@
 package mod.zotmc.onlysilver.init;
 
+import mod.alexndr.simpleores.init.ModTabGroups;
 import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.content.OnlySilverArmorMaterial;
 import mod.zotmc.onlysilver.content.OnlySilverItemTier;
+import mod.zotmc.onlysilver.content.SilverBowItem;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
@@ -38,11 +40,16 @@ public final class ModItems
             ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
 
     // parts
+    public static final RegistryObject<Item> silver_rod = ITEMS.register("silver_rod",
+            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
 
    
     // TOOLS & WEAPONS
     // bows
-
+    public static final RegistryObject<SilverBowItem> silver_bow = ITEMS.register("silver_bow",
+            () -> new SilverBowItem(new Item.Properties().maxDamage(OnlySilverItemTier.SILVER.getMaxUses() * 2 + 1)
+                    .group(ModTabGroups.MOD_ITEM_GROUP)));
+            
     // swords
     public static final RegistryObject<SwordItem> silver_sword = ITEMS.register("silver_sword",
             () -> new SwordItem(OnlySilverItemTier.SILVER, 3, -2.4F,
