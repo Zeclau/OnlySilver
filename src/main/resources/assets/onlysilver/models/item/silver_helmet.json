@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "onlysilver:items/silver_helmet"
+    "layer0": "onlysilver:item/silver_helmet"
   }
 }

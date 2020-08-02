@@ -12,7 +12,7 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
 
 * Base Items and Blocks
 
-  * Ore
+  * <s>Ore</s>
   * Ingot
   * (Compressed) Block
   * Rod
@@ -20,13 +20,13 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
 
 * Material Definitions
 
-  * Tool Parameters
-  * Armor Parameters
+  * <s>Tool Parameters</s>
+  * <s>Armor Parameters</s>
 
 * Equipment
 
-  * Vanilla Tool Set: Pickaxe, Axe, Shovel, Sword and Hoe
-  * Vanilla Armor Set: Helmet, Chestplate, Leggings and Boots
+  * <s>Vanilla Tool Set: Pickaxe, Axe, Shovel, Sword and Hoe</s>
+  * <s>Vanilla Armor Set: Helmet, Chestplate, Leggings and Boots</s>
   * Silver Bow
     * Dual ranged and melee knockback effect
     * Material logic applied: enchantability, repairing material, etc.
@@ -60,13 +60,13 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
     * Armor on any `EntityLiving` that calls `setEquipmentBasedOnDifficulty` on its spawn
     * A Sword or a bow on skeletons
 
-* Ore Generation
+* <s>Ore Generation</s>
 
-  * Customizable in common Options.
+  * <s>Customizable in common Options.</s>
 
 * Mod Options
 
-  * customizable ore generation parameters.
+  * <s>customizable ore generation parameters.</s>
   * ????
 
 ## LICENSE

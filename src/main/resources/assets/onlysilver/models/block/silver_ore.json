@@ -1,7 +1,7 @@
 {
   "parent": "onlysilver:block/ore",
   "textures": {
-    "base": "blocks/stone",
-    "overlay": "onlysilver:blocks/silver_ore"
+    "base": "block/stone",
+    "overlay": "onlysilver:block/silver_ore"
   }
 }

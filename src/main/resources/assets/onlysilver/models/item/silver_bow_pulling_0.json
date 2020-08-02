@@ -1,6 +1,6 @@
 {
   "parent": "onlysilver:item/silver_bow",
   "textures": {
-    "layer0": "onlysilver:items/silver_bow_pulling_0"
+    "layer0": "onlysilver:item/silver_bow_pulling_0"
   }
 }

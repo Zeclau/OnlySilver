@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "onlysilver:items/silver_bow_standby"
+    "layer0": "onlysilver:item/silver_bow_standby"
   },
   "display": {
     "thirdperson_righthand": {

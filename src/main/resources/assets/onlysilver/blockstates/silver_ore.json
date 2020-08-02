@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "onlysilver:silver_ore" }
+    "": { "model": "onlysilver:block/silver_ore" }
   }
 }

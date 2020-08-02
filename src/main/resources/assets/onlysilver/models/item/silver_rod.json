@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "onlysilver:items/silver_rod"
+    "layer0": "onlysilver:item/silver_rod"
   }
 }
