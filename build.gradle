@@ -91,6 +91,10 @@ minecraft {
     }
 }
 
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
 repositories {
         maven {
                 name = "mcmodsrepo"
