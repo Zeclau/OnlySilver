@@ -23,13 +23,6 @@ Additional Credits:
 '''
 
 [[dependencies.onlysilver]]
-    modId="simpleores"
-    mandatory=true
-    versionRange="[1.15.2-2.1.8.0,)"
-    ordering="NONE"
-    side="BOTH"
-    
-[[dependencies.onlysilver]] #optional
     modId="forge"
     mandatory=true
     versionRange="[31.2.0,)"
