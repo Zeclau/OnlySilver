@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " RI",
+    "K I",
+    " RI"
+  ],
+  "key": {
+    "R": {
+      "tag": "forge:rods/silver"
+    },
+    "I": {
+      "tag": "forge:string"
+    },
+    "K": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "onlysilver:silver_bow"
+  }
+}

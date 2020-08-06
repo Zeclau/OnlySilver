@@ -1,6 +1,5 @@
 package mod.zotmc.onlysilver.init;
 
-import mod.zotmc.onlysilver.OnlySilver;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
@@ -8,7 +7,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
-@SuppressWarnings("unused")
 public class ModTags
 {
 
@@ -17,7 +15,7 @@ public class ModTags
         public static final Tag<Item> INGOTS_SILVER = forgeTag("ingots/silver");
         public static final Tag<Item> NUGGETS_SILVER = forgeTag("nuggets/silver");
         public static final Tag<Item> BLOCK_SILVER = forgeTag("storage_blocks/silver");
-        public static final Tag<Item> ROD_SILVER = forgeTag("rods/silver");
+        public static final Tag<Item> RODS_SILVER = forgeTag("rods/silver");
         
 //        private static Tag<Item> tag(String name) {
 //            return new ItemTags.Wrapper(new ResourceLocation(OnlySilver.MODID, name));

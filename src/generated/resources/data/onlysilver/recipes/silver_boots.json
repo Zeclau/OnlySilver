@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "onlysilver:silver_ingot"
+    }
+  },
+  "result": {
+    "item": "onlysilver:silver_boots"
+  }
+}
