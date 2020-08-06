@@ -16,6 +16,7 @@ public class ModTags
         public static final Tag<Item> INGOTS_SILVER = forgeTag("ingots/silver");
         public static final Tag<Item> NUGGETS_SILVER = forgeTag("nuggets/silver");
         public static final Tag<Item> BLOCK_SILVER = forgeTag("storage_blocks/silver");
+        public static final Tag<Item> ROD_SILVER = forgeTag("rods/silver");
         
 //        private static Tag<Item> tag(String name) {
 //            return new ItemTags.Wrapper(new ResourceLocation(OnlySilver.MODID, name));
