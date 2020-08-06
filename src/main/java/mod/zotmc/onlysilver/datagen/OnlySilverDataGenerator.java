@@ -5,12 +5,16 @@ import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
 import java.util.function.Consumer;
 
 import mod.zotmc.onlysilver.OnlySilver;
+import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModItems;
 import mod.zotmc.onlysilver.init.ModTags;
+import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,6 +59,7 @@ public class OnlySilverDataGenerator
 
         protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
         {
+            registerStorageRecipes(consumer);
             registerMiscRecipes(consumer);
             registerToolRecipes(consumer);
             registerArmorRecipes(consumer);
@@ -72,6 +77,17 @@ public class OnlySilverDataGenerator
                 .patternLine(" T")
                 .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
                 .build(consumer);
+            
+            // hoe
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_hoe.get())
+                .key('S', ModTags.Items.INGOTS_SILVER)
+                .key('T', Tags.Items.RODS_WOODEN)
+                .patternLine("SS")
+                .patternLine(" T")
+                .patternLine(" T")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            
             // pickaxe
             ShapedRecipeBuilder.shapedRecipe(ModItems.silver_pickaxe.get())
                 .key('S', ModTags.Items.INGOTS_SILVER)
@@ -81,19 +97,196 @@ public class OnlySilverDataGenerator
                 .patternLine(" T ")
                 .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
                 .build(consumer);
+            
+            // sword
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_sword.get())
+                .key('S', ModTags.Items.INGOTS_SILVER)
+                .key('T', Tags.Items.RODS_WOODEN)
+                .patternLine(" S")
+                .patternLine(" S")
+                .patternLine(" T")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            
+            // shovel
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_shovel.get())
+                .key('S', ModTags.Items.INGOTS_SILVER)
+                .key('T', Tags.Items.RODS_WOODEN)
+                .patternLine(" S")
+                .patternLine(" T")
+                .patternLine(" T")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            
+            // bow
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_bow.get())
+                .key('R', ModTags.Items.ROD_SILVER)
+                .key('I', Tags.Items.STRING)
+                .key('K', Tags.Items.INGOTS_IRON)
+                .patternLine(" RI")
+                .patternLine("K I")
+                .patternLine(" RI")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            
         } // end registerToolRecipes()
         
         protected void registerArmorRecipes(Consumer<IFinishedRecipe> consumer)
         {
-        }
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_helmet.get())
+                .key('S', ModItems.silver_ingot.get())
+                .patternLine("SSS")
+                .patternLine("S S")
+                .patternLine("   ")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_chestplate.get())
+                .key('S', ModItems.silver_ingot.get())
+                .patternLine("S S")
+                .patternLine("SSS")
+                .patternLine("SSS")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_leggings.get())
+                .key('S', ModItems.silver_ingot.get())
+                .patternLine("SSS")
+                .patternLine("S S")
+                .patternLine("S S")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_boots.get())
+                .key('S', ModItems.silver_ingot.get())
+                .patternLine("   ")
+                .patternLine("S S")
+                .patternLine("S S")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+                
+        } // end registerArmorRecipes()
         
-        protected void registerFurnaceRecipes(Consumer<IFinishedRecipe> consumer)
+        protected void registerStorageRecipes(Consumer<IFinishedRecipe> consumer)
         {
-        }
+            // block <=> ingots
+            ShapelessRecipeBuilder.shapelessRecipe(ModItems.silver_ingot.get(), 9)
+                .addIngredient(ModBlocks.silver_block.get())
+                .addCriterion("has_item", hasItem(ModTags.Items.BLOCK_SILVER))
+                .build(consumer);
+            ShapedRecipeBuilder.shapedRecipe(ModBlocks.silver_block.get())
+                .key('S', ModItems.silver_ingot.get())
+                .patternLine("SSS")
+                .patternLine("SSS")
+                .patternLine("SSS")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            
+            // ingot <=> nuggets
+            ShapelessRecipeBuilder.shapelessRecipe(ModItems.silver_nugget.get(), 9)
+                .addIngredient(ModItems.silver_ingot.get())
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_ingot.get())
+                .key('S', ModItems.silver_nugget.get())
+                .patternLine("SSS")
+                .patternLine("SSS")
+                .patternLine("SSS")
+                .addCriterion("has_item", hasItem(ModTags.Items.NUGGETS_SILVER))
+                .build(consumer);
+        } // end registerStorageRecipes()
         
         protected void registerMiscRecipes(Consumer<IFinishedRecipe> consumer)
         {
-        }
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_rod.get())
+                .key('S', ModTags.Items.INGOTS_SILVER)
+                .patternLine("S  ")
+                .patternLine("S  ")
+                .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
+                .build(consumer);
+        } // end registerMiscRecipes()
+
+        protected void registerFurnaceRecipes(Consumer<IFinishedRecipe> consumer)
+        {
+            // ore => ingots
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModBlocks.silver_ore.get()), 
+                                                ModItems.silver_ingot.get(), 0.8F, 200)
+                .addCriterion("has_item", hasItem(ModBlocks.silver_ore.get()))
+                .build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModBlocks.silver_ore.get()), 
+                                                ModItems.silver_ingot.get(), 0.8F, 100)
+                    .addCriterion("has_item", hasItem(ModBlocks.silver_ore.get()))
+                    .build(consumer);
+            
+            // vanilla recycling, tools/armor => nuggets
+            // smelting
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_axe.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_axe.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_boots.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_boots.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_bow.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_bow.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_chestplate.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_chestplate.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_helmet.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_helmet.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_hoe.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_hoe.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_leggings.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_leggings.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_pickaxe.get()),
+                    ModItems.silver_nugget.get(), 0.1F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_pickaxe.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_rod.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_rod.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_shovel.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_shovel.get())).build(consumer);
+            CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ModItems.silver_sword.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 200)
+                    .addCriterion("has_item", hasItem(ModItems.silver_sword.get())).build(consumer);
+            
+            // blasting
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_axe.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_axe.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_boots.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_boots.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_bow.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_bow.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_chestplate.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_chestplate.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_helmet.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_helmet.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_hoe.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_hoe.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_leggings.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_leggings.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_pickaxe.get()),
+                    ModItems.silver_nugget.get(), 0.1F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_pickaxe.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_rod.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_rod.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_shovel.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_shovel.get())).build(consumer);
+            CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ModItems.silver_sword.get()),
+                    ModItems.silver_nugget.get(), 0.4F, 100)
+                    .addCriterion("has_item", hasItem(ModItems.silver_sword.get())).build(consumer);
+        } // end registerFurnaceRecipes()
+
     } // end subclass OnlySilverDataGenerator$Recipes.
     
 } // end-class OnlySilverDataGenerator
