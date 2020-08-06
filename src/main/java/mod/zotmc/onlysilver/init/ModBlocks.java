@@ -1,7 +1,7 @@
 package mod.zotmc.onlysilver.init;
 
-import mod.alexndr.simpleores.api.content.SimpleMetalBlock;
 import mod.zotmc.onlysilver.OnlySilver;
+import mod.zotmc.onlysilver.content.SimpleMetalBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
