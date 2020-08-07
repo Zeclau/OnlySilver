@@ -4,6 +4,7 @@ import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.content.OnlySilverArmorMaterial;
 import mod.zotmc.onlysilver.content.OnlySilverItemTier;
 import mod.zotmc.onlysilver.content.SilverBowItem;
+import mod.zotmc.onlysilver.content.SilverGolemEgg;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
@@ -38,10 +39,12 @@ public final class ModItems
     public static final RegistryObject<Item> silver_nugget = ITEMS.register("silver_nugget",
             ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
 
-    // parts
+    // parts & misc
     public static final RegistryObject<Item> silver_rod = ITEMS.register("silver_rod",
             ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
-
+    
+    public static final RegistryObject<SilverGolemEgg> silver_golem_egg = ITEMS.register("silver_golem_egg",
+             SilverGolemEgg::new);
    
     // TOOLS & WEAPONS
     // bows

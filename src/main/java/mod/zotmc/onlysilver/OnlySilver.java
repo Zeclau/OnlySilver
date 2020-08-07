@@ -5,7 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.init.ModBlocks;
+import mod.zotmc.onlysilver.init.ModEntities;
 import mod.zotmc.onlysilver.init.ModItems;
+import mod.zotmc.onlysilver.init.ModSounds;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +31,8 @@ public class OnlySilver
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModEntities.ENTITIES.register(modEventBus);
+        ModSounds.SOUNDS.register(modEventBus);
         
         // Register Configs
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHolder.SERVER_SPEC);

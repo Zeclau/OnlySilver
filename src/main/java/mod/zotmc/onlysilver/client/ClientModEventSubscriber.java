@@ -1,11 +1,16 @@
 package mod.zotmc.onlysilver.client;
 
 import mod.zotmc.onlysilver.init.ModBlocks;
+import mod.zotmc.onlysilver.init.ModEntities;
+import mod.zotmc.onlysilver.init.ModItems;
 import mod.zotmc.onlysilver.OnlySilver;
+import mod.zotmc.onlysilver.entity.SilverGolemRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -28,10 +33,18 @@ public final class ClientModEventSubscriber
     @SubscribeEvent
     public static void onFMLClientSetupEvent(final FMLClientSetupEvent event) 
     {
-        // doors with see-through windows.
+        // ores with cutouts.
         RenderTypeLookup.setRenderLayer(ModBlocks.silver_ore.get(), (layer) -> layer 
                 == RenderType.getCutout());
-            
+        
+        // entity renderer
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.silver_golem.get(), 
+                SilverGolemRenderer::new);
     } // end onFMLClientSetupEvent
 
+    @SubscribeEvent
+    public static void onItemColor(ColorHandlerEvent.Item event) {
+        event.getItemColors().register((stack, i) -> 0xffffff, ModItems.silver_golem_egg.get());
+    }
+    
 } // end class
