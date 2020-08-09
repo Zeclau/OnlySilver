@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "O",
+    "I"
+  ],
+  "key": {
+    "O": {
+      "tag": "forge:nuggets/silver"
+    },
+    "I": {
+      "tag": "forge:rods/silver"
+    }
+  },
+  "result": {
+    "item": "onlysilver:silver_wand"
+  }
+}

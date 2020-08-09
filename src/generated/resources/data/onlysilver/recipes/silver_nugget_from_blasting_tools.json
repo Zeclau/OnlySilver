@@ -21,6 +21,9 @@
     },
     {
       "item": "onlysilver:silver_sword"
+    },
+    {
+      "item": "onlysilver:silver_wand"
     }
   ],
   "result": "onlysilver:silver_nugget",

@@ -11,8 +11,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.pattern.BlockMaterialMatcher;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.block.pattern.BlockPatternBuilder;
 import net.minecraft.block.pattern.BlockStateMatcher;
@@ -44,7 +42,14 @@ public class SilverWandItem extends Item
     public ActionResultType onItemUse(ItemUseContext context)
     {
         ActionResultType result = super.onItemUse(context);
-        if (trySpawnSilverGolem(context.getWorld(), context.getPos()))
+        
+        World world = context.getWorld();
+        BlockPos pos = context.getPos();
+        
+        if (world.isRemote) {
+            return ActionResultType.SUCCESS;
+        }
+        if (trySpawnSilverGolem(world, pos))
         {
            result = ActionResultType.SUCCESS; 
         } // end-if 
@@ -55,10 +60,9 @@ public class SilverWandItem extends Item
     {
         if (this.silverGolemPattern == null)
         {
-            BlockPatternBuilder.start().aisle("~^~", "~#~", "~#~")
+            this.silverGolemPattern = BlockPatternBuilder.start().aisle("^", "#", "#")
                 .where('^', CachedBlockInfo.hasState(IS_PUMPKIN))
                 .where('#', CachedBlockInfo.hasState(BlockStateMatcher.forBlock(ModBlocks.silver_block.get())))
-                .where('~', CachedBlockInfo.hasState(BlockMaterialMatcher.forMaterial(Material.AIR)))
                 .build();
         }
         return this.silverGolemPattern;
@@ -73,13 +77,13 @@ public class SilverWandItem extends Item
     private boolean trySpawnSilverGolem(World worldIn, BlockPos pos)
     {
         // is block clicked part of silver_golem pattern?
-        BlockPattern.PatternHelper blockpattern$patternhelper = this.getSilverGolemPattern().match(worldIn, pos);
-        if (blockpattern$patternhelper != null) 
+        BlockPattern.PatternHelper patternhelper = this.getSilverGolemPattern().match(worldIn, pos);
+        if (patternhelper != null) 
         {
             // replace the golem constituent blocks with air.
             for(int i = 0; i < this.getSilverGolemPattern().getThumbLength(); ++i) 
             {
-                CachedBlockInfo cachedblockinfo = blockpattern$patternhelper.translateOffset(0, i, 0);
+                CachedBlockInfo cachedblockinfo = patternhelper.translateOffset(0, i, 0);
                 worldIn.setBlockState(cachedblockinfo.getPos(), Blocks.AIR.getDefaultState(), 2);
                 worldIn.playEvent(2001, cachedblockinfo.getPos(), Block.getStateId(cachedblockinfo.getBlockState()));
             } // end-for
@@ -100,12 +104,13 @@ public class SilverWandItem extends Item
             {
                 for(int j1 = 0; j1 < this.getSilverGolemPattern().getThumbLength(); ++j1) 
                 {
-                   CachedBlockInfo cachedblockinfo1 = blockpattern$patternhelper.translateOffset(i1, j1, 0);
+                   CachedBlockInfo cachedblockinfo1 = patternhelper.translateOffset(i1, j1, 0);
                    worldIn.notifyNeighbors(cachedblockinfo1.getPos(), Blocks.AIR);
                 } // end for j1
              } // end for i1
             return true;  // SUCCESS!
         } // end-if
+        
         return false;  // sorry, failed.
     } // end trySpawnGolem()
     
