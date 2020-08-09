@@ -202,6 +202,14 @@ public class OnlySilverDataGenerator
                 .patternLine("S  ")
                 .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
                 .build(consumer);
+            
+            ShapedRecipeBuilder.shapedRecipe(ModItems.silver_wand.get())
+                .key('O', ModTags.Items.NUGGETS_SILVER)
+                .key('I', ModTags.Items.RODS_SILVER)
+                .patternLine("O")
+                .patternLine("I")
+                .addCriterion("has_item", hasItem(ModTags.Items.RODS_SILVER))
+                .build(consumer);
         } // end registerMiscRecipes()
 
         protected void registerFurnaceRecipes(Consumer<IFinishedRecipe> consumer)
@@ -222,7 +230,7 @@ public class OnlySilverDataGenerator
                     .smeltingRecipe(
                             Ingredient.fromItems(ModItems.silver_axe.get(), ModItems.silver_bow.get(),
                                     ModItems.silver_hoe.get(), ModItems.silver_pickaxe.get(), ModItems.silver_rod.get(),
-                                    ModItems.silver_shovel.get(), ModItems.silver_sword.get()),
+                                    ModItems.silver_shovel.get(), ModItems.silver_sword.get(), ModItems.silver_wand.get()),
                             ModItems.silver_nugget.get(), 0.4F, 200)
                     .addCriterion("has_item", hasItem(ModItems.silver_axe.get()))
                     .build(consumer, new ResourceLocation(OnlySilver.MODID, "silver_nugget_from_smelting_tools"));
@@ -240,7 +248,7 @@ public class OnlySilverDataGenerator
                     .blastingRecipe(
                             Ingredient.fromItems(ModItems.silver_axe.get(), ModItems.silver_bow.get(),
                                     ModItems.silver_hoe.get(), ModItems.silver_pickaxe.get(), ModItems.silver_rod.get(),
-                                    ModItems.silver_shovel.get(), ModItems.silver_sword.get()),
+                                    ModItems.silver_shovel.get(), ModItems.silver_sword.get(), ModItems.silver_wand.get()),
                             ModItems.silver_nugget.get(), 0.4F, 100)
                     .addCriterion("has_item", hasItem(ModItems.silver_axe.get()))
                     .build(consumer, new ResourceLocation(OnlySilver.MODID, "silver_nugget_from_blasting_tools"));
