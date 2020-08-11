@@ -5,9 +5,11 @@ import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import mod.zotmc.onlysilver.api.OnlySilverRegistry;
 import mod.zotmc.onlysilver.config.ConfigHelper;
 import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.generation.OreGeneration;
+import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModTabGroups;
 import net.minecraft.item.BlockItem;
@@ -37,6 +39,8 @@ public final class ModEventSubscriber
         DeferredWorkQueue.runLater( ()-> {
             OreGeneration.setupOreGen();
         });
+        OnlySilverRegistry.registerSilverPredicate(new IsOnlySilverItem());
+        
         LOGGER.debug("Common setup done");
     } // end onCommonSetup
 

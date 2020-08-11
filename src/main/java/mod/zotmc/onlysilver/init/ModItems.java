@@ -95,6 +95,6 @@ public final class ModItems
     public static final RegistryObject<ArmorItem> silver_boots = ITEMS.register("silver_boots",
             () -> new ArmorItem(OnlySilverArmorMaterial.SILVER, EquipmentSlotType.FEET,
                     new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
-
-
+    
+    
 } // end class
