@@ -1,6 +1,7 @@
 package mod.zotmc.onlysilver.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 import mod.zotmc.onlysilver.OnlySilver;
 import net.minecraft.client.renderer.Vector3f;
@@ -44,6 +45,13 @@ public class SilverGolemRenderer extends MobRenderer<SilverGolemEntity, SilverGo
             float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(6.5F * f2));
          }    
+    }
+
+    @Override
+    protected void preRenderCallback(SilverGolemEntity entitylivingbaseIn, MatrixStack matrixStackIn,
+            float partialTickTime)
+    {
+        RenderSystem.scalef(8/14f, 19/29f, 8/14f);
     }
 
     

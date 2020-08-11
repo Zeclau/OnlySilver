@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 
 public class SilverGolemEntity extends IronGolemEntity
 {
-   
     public SilverGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn)
     {
         super(type, worldIn);
