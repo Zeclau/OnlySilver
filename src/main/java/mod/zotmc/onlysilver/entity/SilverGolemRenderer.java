@@ -45,5 +45,12 @@ public class SilverGolemRenderer extends MobRenderer<SilverGolemEntity, SilverGo
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(6.5F * f2));
          }    
     }
+
+    @Override
+    protected void preRenderCallback(SilverGolemEntity entitylivingbaseIn, MatrixStack matrixStackIn,
+            float partialTickTime)
+    {
+        matrixStackIn.scale(8/14f, 19/29f, 8/14f);
+    }
     
 } // end-class
