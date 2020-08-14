@@ -18,7 +18,7 @@ public final class ServerConfig
     ServerConfig(final ForgeConfigSpec.Builder builder)
     {
         builder.push("General");
-        serverBuildSilverGolem = builder.comment("Can build silver golems? (NOT IMPLEMENTED YET)")
+        serverBuildSilverGolem = builder.comment("Can build silver golems?")
                 .translation(OnlySilver.MODID + "options.silver_golem_assembly")
                 .define("BuildSilverGolem", false);
         builder.pop();
