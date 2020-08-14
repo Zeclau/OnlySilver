@@ -10,24 +10,24 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
 
 ## Features, aka TODO list
 
-* Base Items and Blocks  
+* <s>Base Items and Blocks</s>  
     * <s>Ore</s>    
     * <s>Ingot</s>    
     * <s>(Compressed) Block</s>    
     * <s>Rod</s>    
-        * Cost two ingots each  
+        * <s>Cost two ingots each</s>  
 
 * <s>Material Definitions</s>    
     * <s>Tool Parameters</s>    
     * <s>Armor Parameters</s>   
 
-* Equipment   
+* <s>Equipment</s>   
     * <s>Vanilla Tool Set: Pickaxe, Axe, Shovel, Sword and Hoe</s>    
     * <s>Vanilla Armor Set: Helmet, Chestplate, Leggings and Boots</s>    
     * <s>Silver Bow</s>      
         * <s>Ranged knockback effect</s>  
-        * Material logic applied: enchantability, repairing material, etc.  
-        * Crafted from rods, strings and an iron ingot  
+        * <s>Material logic applied: enchantability, repairing material, etc.</s>  
+        * <s>Crafted from rods, strings and an iron ingot</s>  
 
 * Enchantments  
     * Incantation  
@@ -40,10 +40,10 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
         * Item entity invulnerability except to void damage  
 
 * Mobs  
-     * Silver Golem  
-     * Tiny and fast moving    
-     * Immune to poison  
-     * Crafted from a silver block and a pumpkin / lantern  
+     * <s>Silver Golem</s>  
+     * <s>Tiny and fast moving</s>    
+     * <s>Immune to poison</s>  
+     * <s>Crafted from a silver block and a pumpkin / lantern</s>  
      * Dispenser support is *mandatory*  
      
 * <s>Ore Generation</s>  
