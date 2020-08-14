@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 import javax.annotation.Nullable;
 
+import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.entity.SilverGolemEntity;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModEntities;
@@ -46,7 +47,8 @@ public class SilverWandItem extends Item
         World world = context.getWorld();
         BlockPos pos = context.getPos();
         
-        if (world.isRemote) {
+        if (world.isRemote) 
+        {
             return ActionResultType.SUCCESS;
         }
         if (trySpawnSilverGolem(world, pos))
@@ -60,7 +62,7 @@ public class SilverWandItem extends Item
     {
         if (this.silverGolemPattern == null)
         {
-            this.silverGolemPattern = BlockPatternBuilder.start().aisle("^", "#", "#")
+            this.silverGolemPattern = BlockPatternBuilder.start().aisle("^", "#")
                 .where('^', CachedBlockInfo.hasState(IS_PUMPKIN))
                 .where('#', CachedBlockInfo.hasState(BlockStateMatcher.forBlock(ModBlocks.silver_block.get())))
                 .build();
@@ -76,6 +78,10 @@ public class SilverWandItem extends Item
      */
     private boolean trySpawnSilverGolem(World worldIn, BlockPos pos)
     {
+        if (! OnlySilverConfig.buildSilverGolem) {
+            return false;
+        }
+
         // is block clicked part of silver_golem pattern?
         BlockPattern.PatternHelper patternhelper = this.getSilverGolemPattern().match(worldIn, pos);
         if (patternhelper != null) 

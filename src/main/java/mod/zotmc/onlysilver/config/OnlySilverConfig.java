@@ -10,7 +10,7 @@ public class OnlySilverConfig
     // general
     public static boolean enableAuraEnchantment = false;
     public static boolean enableIncantationEnchantment = false;
-    public static boolean buildSilverGolem = false;
+    public static boolean buildSilverGolem = true;
     
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
     public static CountRangeConfig silver_cfg;
