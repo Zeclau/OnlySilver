@@ -20,7 +20,7 @@ public final class ServerConfig
         builder.push("General");
         serverBuildSilverGolem = builder.comment("Can build silver golems?")
                 .translation(OnlySilver.MODID + "options.silver_golem_assembly")
-                .define("BuildSilverGolem", false);
+                .define("BuildSilverGolem", true);
         builder.pop();
         builder.push("Ore Generation");
         serverSilverVeinSize = builder.comment("Silver ore vein size")
