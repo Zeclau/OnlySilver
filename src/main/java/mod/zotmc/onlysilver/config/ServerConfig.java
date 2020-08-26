@@ -39,7 +39,7 @@ public final class ServerConfig
                 .defineInRange("SilverMaxHeight", 42, 1, 255);
         builder.pop();
         builder.push("Enchantments");
-        serverEnableAuraEnchantment = builder.comment("Silver Aura Enchantment enabled? (NOT YET IMPLEMENTED)")
+        serverEnableAuraEnchantment = builder.comment("Everlasting Enchantment enabled?")
                 .define("EnableSilverAura", false);
         serverEnableIncantationEnchantment = builder.comment("Enable Incantation enchantment? (NOT YET IMPLEMENTED")
                 .define("EnableIncantation", false);

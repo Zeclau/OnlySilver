@@ -3,6 +3,18 @@ package mod.zotmc.onlysilver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import mod.zotmc.onlysilver.config.OnlySilverConfig;
+import mod.zotmc.onlysilver.enchant.SilverAuraEnchantment;
+import mod.zotmc.onlysilver.helpers.Utils;
+import mod.zotmc.onlysilver.init.ModEnchants;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 /**
@@ -12,78 +24,89 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = OnlySilver.MODID, bus = EventBusSubscriber.Bus.FORGE)
 public final class ForgeEventSubscriber
 {
-        @SuppressWarnings("unused")
-        private static final Logger LOGGER = LogManager.getLogger(OnlySilver.MODID + " Forge Event Subscriber");
+    @SuppressWarnings("unused")
+    private static final Logger LOGGER = LogManager.getLogger(OnlySilver.MODID + " Forge Event Subscriber");
 
-//    /**
-//     * add mod loot to loot tables. Code heavily based on Botania's LootHandler, which
-//     * neatly solves the problem when I couldn't figure it out.
-//     */
-//    @SubscribeEvent
-//    public static void LootLoad(final LootTableLoadEvent event)
-//    {
-//        if (SimpleModConfig.addModLootToChests)
-//        {
-//            String prefix = "minecraft:chests/";
-//            String name = event.getName().toString();
-//
-//            if (name.startsWith(prefix)) 
-//            {
-//                String file = name.substring(name.indexOf(prefix) + prefix.length());
-//                
-//                // village chests are a bit more complicated now, but use the old
-//                // village_blacksmith chest loot table anyway.
-//                if (file.startsWith("village/village_")) 
-//                {
-//                    String village = "village/";
-//                    file = file.substring(file.indexOf(village) + village.length());
-//                }
-//                else if (file.startsWith("stronghold_")) 
-//                {
-//                    file = "stronghold";
-//                }
-//                switch (file) {
-//                case "simple_dungeon":
-//                case "stronghold":
-//                case "woodland_mansion":
-//                case "shipwreck_supply":
-//                case "shipwreck_map":
-//                case "shipwreck_treasure":
-//                case "buried_treasure":
-//                case "pillager_outpost":
-//                case "underwater_ruin_small":
-//                case "underwater_ruin_big":
-//                    LOGGER.debug("Attempting to inject loot pool for " + file);
-//                    event.getTable().addPool(ChestLootHandler.getInjectPool(SimpleMod.MODID, "simple_dungeon"));
-//                    break;
-//                case "nether_bridge":
-//                    LOGGER.debug("Attempting to inject loot pool for " + file);
-//                    event.getTable().addPool(ChestLootHandler.getInjectPool(SimpleMod.MODID, "nether"));
-//                    break;
-//                case "village_weaponsmith":
-//                case "village_toolsmith":
-//                case "village_armorer":
-//                case "village_shepherd":
-//                case "village_mason":
-//                case "village_fletcher":
-//                case "desert_pyramid":
-//                case "abandoned_mineshaft":
-//                case "jungle_temple":
-//                case "spawn_bonus_chest":
-//                case "igloo_chest":
-//                    LOGGER.debug("Attempting to inject loot pool for " + file);
-//                    event.getTable().addPool(ChestLootHandler.getInjectPool(SimpleMod.MODID, file));
-//                    break;
-//                default:
-//                    // cases deliberately ignored:
-//                    // dispensers, because you don't shoot ingots/ores/tools at people.
-//                    // other villagers
-//                    // the_end, because no end ores or metals.
-//                    break;
-//                } // end-switch
-//            } // end-if chest loot
-//            
-//        } // end-if config allows
-//    } // end LootLoad()
+    /* SILVER AURA EVENTS */
+    /**
+     * The SilverAuraEnchantment extends the lifespan of a dropped item that is enchanted with 
+     * it--if the SilverAuraEnchantment is enabled. It will only extend lifespan once before item
+     * is picked up.
+     * 
+     * @param event
+     */
+    @SubscribeEvent
+    public static void onItemExpire(final ItemExpireEvent event)
+    {
+        if (!OnlySilverConfig.enableAuraEnchantment) {
+            return;
+        }
+        ItemEntity entity = event.getEntityItem();
+        ItemStack stack = entity.getItem();
+        if (Utils.hasEnch(stack, ModEnchants.silver_aura.get())) 
+        {
+            if (stack.getItem() == Items.ENCHANTED_BOOK) 
+            {
+                event.setExtraLife(96000);
+                event.setCanceled(true);                
+            }
+            else 
+            {
+                CompoundNBT tag = stack.getOrCreateTag();
+                if (!tag.getBoolean(SilverAuraEnchantment.extendedLifeTag)) 
+                {
+                    event.setExtraLife(stack.getEntityLifespan(entity.world)*2);
+                    event.setCanceled(true);
+                    tag.putBoolean(SilverAuraEnchantment.extendedLifeTag, true);
+                }
+            } // end-else
+        } // end-if has silver_aura enchant
+    } // end onItemExpire()
+
+    /**
+     * if a ItemEntity with a SilverAuraEnchantment is picked up, it resets the 
+     * extendedLifeTag property to false.
+     */
+    @SubscribeEvent
+    public static void onItemPickup(final EntityItemPickupEvent event)
+    {
+        if (!OnlySilverConfig.enableAuraEnchantment) {
+            return;
+        }
+        ItemEntity entity = event.getItem();
+        ItemStack stack = entity.getItem();
+        if (Utils.hasEnch(stack, ModEnchants.silver_aura.get()) 
+                && stack.getItem() != Items.ENCHANTED_BOOK) 
+        {
+            CompoundNBT tag = stack.getOrCreateTag();
+            if (tag.getBoolean(SilverAuraEnchantment.extendedLifeTag)) 
+            {
+                tag.putBoolean(SilverAuraEnchantment.extendedLifeTag, false);
+            }
+        }
+    } // end onItemPickup()
     
+    /** 
+     * items enchanted with SilverAura do not burn up in lava or fire. It will still 
+     * eventually despawn.
+     */
+    @SubscribeEvent
+    public static void onEntityJoinWorld(final EntityJoinWorldEvent event)
+    {
+        if (!OnlySilverConfig.enableAuraEnchantment ) 
+        {
+            return;
+        }
+        // is it even an item?
+        if (event.getEntity() instanceof ItemEntity)
+        {
+            ItemEntity entity = (ItemEntity) event.getEntity();
+            ItemStack stack = entity.getItem();
+            if (Utils.hasEnch(stack, ModEnchants.silver_aura.get()))
+            {
+                entity.setInvulnerable(true);
+            } // end-if has silver_aura
+        } // end-if ItemEntity
+    } // end onEntityJoinWorld()
+     
 } // end-class

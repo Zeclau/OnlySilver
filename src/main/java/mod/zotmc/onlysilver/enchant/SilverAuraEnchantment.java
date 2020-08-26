@@ -1,5 +1,6 @@
 package mod.zotmc.onlysilver.enchant;
 
+import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.api.OnlySilverRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
@@ -10,7 +11,8 @@ import net.minecraft.util.DamageSource;
 
 public class SilverAuraEnchantment extends Enchantment
 {
-
+    public static final String extendedLifeTag = OnlySilver.MODID + "-lifeExtended";
+    
     public SilverAuraEnchantment()
     {
         super(Rarity.UNCOMMON, EnchantmentType.BREAKABLE, EquipmentSlotType.values());
@@ -54,7 +56,7 @@ public class SilverAuraEnchantment extends Enchantment
     @Override
     public boolean isAllowedOnBooks()
     {
-        return false;
+        return true;
     }
 
 } // end class
