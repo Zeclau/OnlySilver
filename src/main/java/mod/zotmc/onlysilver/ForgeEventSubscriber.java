@@ -41,6 +41,10 @@ public final class ForgeEventSubscriber
         if (!OnlySilverConfig.enableAuraEnchantment) {
             return;
         }
+        // don't try to do anything if the enchantment isn't loaded yet.
+        if (!ModEnchants.silver_aura.isPresent()) {
+            return;
+        }
         ItemEntity entity = event.getEntityItem();
         ItemStack stack = entity.getItem();
         if (Utils.hasEnch(stack, ModEnchants.silver_aura.get())) 
@@ -73,6 +77,10 @@ public final class ForgeEventSubscriber
         if (!OnlySilverConfig.enableAuraEnchantment) {
             return;
         }
+        // don't try to do anything if the enchantment isn't loaded yet.
+        if (!ModEnchants.silver_aura.isPresent()) {
+            return;
+        }
         ItemEntity entity = event.getItem();
         ItemStack stack = entity.getItem();
         if (Utils.hasEnch(stack, ModEnchants.silver_aura.get()) 
@@ -95,6 +103,10 @@ public final class ForgeEventSubscriber
     {
         if (!OnlySilverConfig.enableAuraEnchantment ) 
         {
+            return;
+        }
+        // don't try to do anything if the enchantment isn't loaded yet.
+        if (!ModEnchants.silver_aura.isPresent()) {
             return;
         }
         // is it even an item?

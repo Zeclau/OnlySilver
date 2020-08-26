@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.init.ModBlocks;
+import mod.zotmc.onlysilver.init.ModEnchants;
 import mod.zotmc.onlysilver.init.ModEntities;
 import mod.zotmc.onlysilver.init.ModItems;
 import mod.zotmc.onlysilver.init.ModSounds;
@@ -33,6 +34,7 @@ public class OnlySilver
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
+        ModEnchants.ENCHANTS.register(modEventBus);
         
         // Register Configs
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHolder.SERVER_SPEC);

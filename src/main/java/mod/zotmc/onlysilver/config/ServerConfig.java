@@ -40,7 +40,7 @@ public final class ServerConfig
         builder.pop();
         builder.push("Enchantments");
         serverEnableAuraEnchantment = builder.comment("Everlasting Enchantment enabled?")
-                .define("EnableSilverAura", false);
+                .define("EnableSilverAura", true);
         serverEnableIncantationEnchantment = builder.comment("Enable Incantation enchantment? (NOT YET IMPLEMENTED")
                 .define("EnableIncantation", false);
         builder.pop();
