@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.JsonObject;
 
+import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.helpers.Utils;
 import mod.zotmc.onlysilver.init.ModEnchants;
@@ -24,6 +28,7 @@ import net.minecraftforge.common.loot.LootModifier;
 
 public class OnlySilverLootModifiers
 {
+    private static final Logger LOGGER = LogManager.getLogger(OnlySilver.MODID + " OnlySilverLootModifiers");
 
     /**
      * Handles loot modification done by Incantation enchantment.
@@ -39,6 +44,7 @@ public class OnlySilverLootModifiers
         @Override
         protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
         {
+            LOGGER.debug("In IncantationLootModifier.doApply");
             // don't do anything if Incantation not enabled.
             if (!OnlySilverConfig.enableIncantationEnchantment)
             {
@@ -47,6 +53,7 @@ public class OnlySilverLootModifiers
             // loot dropper must be a mob, killed by a player, otherwise no action.
             if (!(context.has(LootParameters.LAST_DAMAGE_PLAYER) && context.has(LootParameters.THIS_ENTITY)))
             {
+                LOGGER.debug("not dropped by a player-killed mob");
                 return generatedLoot;
             }
             else
@@ -80,6 +87,7 @@ public class OnlySilverLootModifiers
                             {
                                 Random rand = context.getWorld().getRandom();
                                 EnchantmentHelper.addRandomEnchantment(rand, drop, strength, false);
+                                LOGGER.debug("Random enchantment applied!");
                                 
                                 // damage the weapon applying the incantation. This could break it.
                                 weapon.damageItem(strength*2, player, (foo) -> {foo.sendBreakAnimation(EquipmentSlotType.MAINHAND);});
