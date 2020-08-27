@@ -11,7 +11,7 @@ public class IncantationEnchantment extends Enchantment
 
     public IncantationEnchantment()
     {
-        super(Rarity.RARE, EnchantmentType.DIGGER, new EquipmentSlotType[] {EquipmentSlotType.MAINHAND});
+        super(Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[] {EquipmentSlotType.MAINHAND});
     }
 
     @Override

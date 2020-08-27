@@ -8,8 +8,8 @@ public class OnlySilverConfig
     public static OnlySilverConfig INSTANCE = new OnlySilverConfig();
     
     // general
-    public static boolean enableAuraEnchantment = false;
-    public static boolean enableIncantationEnchantment = false;
+    public static boolean enableAuraEnchantment = true;
+    public static boolean enableIncantationEnchantment = true;
     public static boolean buildSilverGolem = true;
     
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
