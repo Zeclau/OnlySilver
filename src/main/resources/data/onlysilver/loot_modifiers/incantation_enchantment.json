@@ -1,0 +1,18 @@
+{
+	"type": "onlysilver:incantation_enchantment",
+	"conditions": [
+		{
+			"condition": "minecraft:match_tool",
+			"predicate": {
+				"enchantments": [
+					{
+						"enchantment": "onlysilver:incantation",
+						"levels": {
+							"min": 1
+						}
+					}
+				]
+			}
+		}
+	]
+}

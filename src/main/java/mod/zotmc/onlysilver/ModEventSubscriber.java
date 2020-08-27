@@ -2,18 +2,23 @@ package mod.zotmc.onlysilver;
 
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
 
+import javax.annotation.Nonnull;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mod.zotmc.onlysilver.api.OnlySilverRegistry;
 import mod.zotmc.onlysilver.config.ConfigHelper;
 import mod.zotmc.onlysilver.config.ConfigHolder;
+import mod.zotmc.onlysilver.enchant.OnlySilverLootModifiers;
 import mod.zotmc.onlysilver.generation.OreGeneration;
 import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModTabGroups;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -87,5 +92,16 @@ public final class ModEventSubscriber
             ConfigHelper.bakeClient(config);
         }
 	} // onModConfigEvent
+	
+	/* FOR INCANTATION ENCHANTMENT */
+	@SubscribeEvent
+    public static void onRegisterModifierSerializers(
+            @Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event)
+    {
+        event.getRegistry().register(
+                new OnlySilverLootModifiers.IncantationLootModifier.Serializer().setRegistryName(
+                        new ResourceLocation(OnlySilver.MODID, "incantation")) );
+    } // end registerModifierSerializers
+
 	
 } // end class ModEventSubscriber
