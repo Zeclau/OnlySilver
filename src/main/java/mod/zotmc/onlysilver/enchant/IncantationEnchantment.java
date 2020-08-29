@@ -1,8 +1,11 @@
 package mod.zotmc.onlysilver.enchant;
 
 import mod.zotmc.onlysilver.api.OnlySilverRegistry;
+import mod.zotmc.onlysilver.init.ModEnchants;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
@@ -47,4 +50,20 @@ public class IncantationEnchantment extends Enchantment
         return false;
     }
     
+    /**
+     * utility function to actually do the enchantment and damage the incanting weapon.
+     * @param player
+     * @param heldItem
+     * @param target
+     * @return
+     */
+    public static ItemStack applyIncantation(PlayerEntity player, ItemStack heldItem, ItemStack target)
+    {
+        int ilvl = EnchantmentHelper.getEnchantmentLevel(ModEnchants.incantation.get(), heldItem);
+        int strength = ilvl * 10 - 5;
+        EnchantmentHelper.addRandomEnchantment(player.world.getRandom(), target, strength, true);
+        // damage the weapon applying the incantation. This could break it.
+        heldItem.damageItem(strength*2, player, (foo) -> {foo.sendBreakAnimation(EquipmentSlotType.MAINHAND);});
+        return target;
+    } // end applyIncantation()
 } // end class

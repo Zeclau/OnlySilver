@@ -2,7 +2,6 @@ package mod.zotmc.onlysilver.enchant;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,11 +12,9 @@ import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.helpers.Utils;
 import mod.zotmc.onlysilver.init.ModEnchants;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootContext;
@@ -48,6 +45,7 @@ public class OnlySilverLootModifiers
             // don't do anything if Incantation not enabled.
             if (!OnlySilverConfig.enableIncantationEnchantment)
             {
+                LOGGER.debug("IncantationEnchantment disabled");
                 return generatedLoot;
             }
             // loot dropper must be a mob, killed by a player, otherwise no action.
@@ -63,36 +61,44 @@ public class OnlySilverLootModifiers
                 if (loot_dropper instanceof LivingEntity)
                 {
                     PlayerEntity player = context.get(LootParameters.LAST_DAMAGE_PLAYER);
-                    ItemStack weapon = ItemStack.EMPTY;
-                    if (Utils.hasEnch(player.getHeldItemMainhand(), ModEnchants.incantation.get()))
+
+                    ItemStack weapon = Utils.getHeldItemWithEnch(player, ModEnchants.incantation.get());
+                    if (weapon.isEmpty()) 
                     {
-                        weapon = player.getHeldItemMainhand();
-                    }
-                    else if (Utils.hasEnch(player.getHeldItemOffhand(), ModEnchants.incantation.get()))
-                    {
-                        weapon = player.getHeldItemOffhand();
+                        LOGGER.debug("player weapon does not have Incantation enchantment");
                     }
                     // make sure killing player has the Incantation enchant, and find the weapon it
                     // is on.
-                    if (!weapon.isEmpty())
+                    else 
                     {
                         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-                        int ilvl = EnchantmentHelper.getEnchantmentLevel(ModEnchants.incantation.get(), weapon);
-                        int strength = ilvl * 10 - 5;
                         
                         for (ItemStack drop : generatedLoot)
                         {
                             // is the drop unenchanted and enchantable, and is the weapon unbroken?
-                            if (!weapon.isEmpty() && !drop.isEmpty() && !drop.isEnchanted() && drop.isEnchantable()) 
-                            {
-                                Random rand = context.getWorld().getRandom();
-                                EnchantmentHelper.addRandomEnchantment(rand, drop, strength, false);
-                                LOGGER.debug("Random enchantment applied!");
-                                
-                                // damage the weapon applying the incantation. This could break it.
-                                weapon.damageItem(strength*2, player, (foo) -> {foo.sendBreakAnimation(EquipmentSlotType.MAINHAND);});
+                            if (weapon.isEmpty()) {
+                                LOGGER.debug("Incantation weapon is broken");
+                                ret.add(drop);
                             }
-                            ret.add(drop);
+                            else if (drop.isEmpty()) {
+                                LOGGER.debug("Drop is broken or missing");
+                                if (drop != ItemStack.EMPTY) {
+                                    LOGGER.debug("Broken item is " + drop.getDisplayName().getString());
+                                }
+                                ret.add(drop);
+                            }
+                            else if (!drop.isEnchantable()) {
+                                LOGGER.debug("Drop (" + drop.getDisplayName().getString() + ") is not enchantable");
+                                ret.add(drop);
+                            }
+                            else  // valid for random enchant.
+                            {
+                                LOGGER.debug("Apply random enchantment to " +  drop.getDisplayName().getString() + "!");
+                                ItemStack newdrop = drop.copy();
+                                IncantationEnchantment.applyIncantation(player, weapon, newdrop);
+                                LOGGER.debug("Random enchantment applied to " +  newdrop.getDisplayName().getString() + "!");
+                                ret.add(newdrop);
+                            } // end-else
                         } // end-for
                         return ret;
                     } // end-if incantation weapon exists

@@ -100,7 +100,7 @@ public final class ModEventSubscriber
     {
         event.getRegistry().register(
                 new OnlySilverLootModifiers.IncantationLootModifier.Serializer().setRegistryName(
-                        new ResourceLocation(OnlySilver.MODID, "incantation")) );
+                        new ResourceLocation(OnlySilver.MODID, "incantation_enchantment")) );
     } // end registerModifierSerializers
 
 	
