@@ -1,8 +1,6 @@
 package mod.zotmc.onlysilver;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,17 +10,12 @@ import mod.zotmc.onlysilver.enchant.IncantationEnchantment;
 import mod.zotmc.onlysilver.enchant.SilverAuraEnchantment;
 import mod.zotmc.onlysilver.helpers.Utils;
 import mod.zotmc.onlysilver.init.ModEnchants;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
@@ -159,7 +152,6 @@ public final class ForgeEventSubscriber
         // did the player kill it?
         if (damage.getTrueSource() != null && damage.getTrueSource() instanceof PlayerEntity)
         {
-            LivingEntity victim = event.getEntityLiving();
             PlayerEntity killer = (PlayerEntity) damage.getTrueSource();
 
             // does player have incantation enchantment on weapon?
