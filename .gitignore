@@ -2,7 +2,6 @@
 /.gradle
 /build
 /run
-/gradle.properties
 gradlew
 gradle/
 gradlew.bat
