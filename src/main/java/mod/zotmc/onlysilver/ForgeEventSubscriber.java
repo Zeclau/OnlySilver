@@ -135,9 +135,8 @@ public final class ForgeEventSubscriber
 
     /* INCANTATION EVENTS */
     /**
-     * The capture list for dropped mob equipment is cleared before passing it to
-     * the LivingDropEvent; however, the rest of the info is valid. We use the mob
-     * position to see what it dropped at its own location.
+     * The capture list for dropped mob equipment is cleared after passing it to
+     * the LivingDropEvent; however, it is valid for this event. We edit valid ItemEntitys in place.
      */
     @SubscribeEvent
     public static void onLivingDropsEvent(final LivingDropsEvent event)
@@ -172,7 +171,7 @@ public final class ForgeEventSubscriber
                             // try editing it in place?
                             ItemStack incantItem = Utils.getHeldItemWithEnch(killer, ModEnchants.incantation.get());
                             IncantationEnchantment.applyIncantation(killer, incantItem, eStack);
-                            LOGGER.debug("added random enchantment using Incantation!");
+                            LOGGER.debug("Added random enchantment using Incantation!");
                         }
                     } // end-for
                 }

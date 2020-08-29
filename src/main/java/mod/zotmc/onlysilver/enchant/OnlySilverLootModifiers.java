@@ -41,11 +41,11 @@ public class OnlySilverLootModifiers
         @Override
         protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
         {
-            LOGGER.debug("In IncantationLootModifier.doApply");
+            // LOGGER.debug("In IncantationLootModifier.doApply");
             // don't do anything if Incantation not enabled.
             if (!OnlySilverConfig.enableIncantationEnchantment)
             {
-                LOGGER.debug("IncantationEnchantment disabled");
+                // LOGGER.debug("IncantationEnchantment disabled");
                 return generatedLoot;
             }
             // loot dropper must be a mob, killed by a player, otherwise no action.
@@ -65,7 +65,7 @@ public class OnlySilverLootModifiers
                     ItemStack weapon = Utils.getHeldItemWithEnch(player, ModEnchants.incantation.get());
                     if (weapon.isEmpty()) 
                     {
-                        LOGGER.debug("player weapon does not have Incantation enchantment");
+                        // LOGGER.debug("player weapon does not have Incantation enchantment");
                     }
                     // make sure killing player has the Incantation enchant, and find the weapon it
                     // is on.
@@ -81,19 +81,18 @@ public class OnlySilverLootModifiers
                                 ret.add(drop);
                             }
                             else if (drop.isEmpty()) {
-                                LOGGER.debug("Drop is broken or missing");
                                 if (drop != ItemStack.EMPTY) {
-                                    LOGGER.debug("Broken item is " + drop.getDisplayName().getString());
+                                    LOGGER.debug("Broken/Missing item is " + drop.getDisplayName().getString());
                                 }
                                 ret.add(drop);
                             }
                             else if (!drop.isEnchantable()) {
-                                LOGGER.debug("Drop (" + drop.getDisplayName().getString() + ") is not enchantable");
+                                // LOGGER.debug("Drop (" + drop.getDisplayName().getString() + ") is not enchantable");
                                 ret.add(drop);
                             }
                             else  // valid for random enchant.
                             {
-                                LOGGER.debug("Apply random enchantment to " +  drop.getDisplayName().getString() + "!");
+                                // LOGGER.debug("Apply random enchantment to " +  drop.getDisplayName().getString() + "!");
                                 ItemStack newdrop = drop.copy();
                                 IncantationEnchantment.applyIncantation(player, weapon, newdrop);
                                 LOGGER.debug("Random enchantment applied to " +  newdrop.getDisplayName().getString() + "!");
