@@ -1,9 +1,9 @@
 package mod.zotmc.onlysilver.init;
 
 import mod.zotmc.onlysilver.OnlySilver;
-import mod.zotmc.onlysilver.content.SimpleMetalBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -29,13 +29,14 @@ public final class ModBlocks
     // Ore Blocks
     public static final RegistryObject<OreBlock> silver_ore = BLOCKS.register("silver_ore",
             () -> new OreBlock(Block.Properties.create(Material.ROCK)
-                    .hardnessAndResistance( 3.0F, 10.0F)
+                    .hardnessAndResistance( 3.0F, 10.0F).setRequiresTool()
                     .harvestTool(ToolType.PICKAXE).harvestLevel(1)));
 
     // Metal Blocks
-    public static final RegistryObject<SimpleMetalBlock> silver_block = BLOCKS.register("silver_block",
-            () -> new SimpleMetalBlock(Block.Properties.create(Material.IRON)
-                    .hardnessAndResistance(7.0F, 12.0F)
+    public static final RegistryObject<Block> silver_block = BLOCKS.register("silver_block",
+            () -> new Block(Block.Properties.create(Material.IRON)
+                    .hardnessAndResistance(7.0F, 12.0F).setRequiresTool()
+                    .sound(SoundType.METAL)
                     .harvestTool(ToolType.PICKAXE).harvestLevel(0)));
 
 }  // end class ModBlocks

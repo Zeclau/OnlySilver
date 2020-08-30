@@ -111,7 +111,7 @@ public class SilverWandItem extends Item
                 for(int j1 = 0; j1 < this.getSilverGolemPattern().getThumbLength(); ++j1) 
                 {
                    CachedBlockInfo cachedblockinfo1 = patternhelper.translateOffset(i1, j1, 0);
-                   worldIn.notifyNeighbors(cachedblockinfo1.getPos(), Blocks.AIR);
+                   worldIn.notifyNeighborsOfStateChange(cachedblockinfo1.getPos(), Blocks.AIR);
                 } // end for j1
              } // end for i1
             return true;  // SUCCESS!

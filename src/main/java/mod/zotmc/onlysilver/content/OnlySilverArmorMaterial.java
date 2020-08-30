@@ -76,4 +76,11 @@ public enum OnlySilverArmorMaterial implements IArmorMaterial
     public float getToughness() {
         return this.toughness;
     }
+
+    @Override
+    public float getKnockbackResistance()
+    {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }  // end class SimpleOresArmorMaterial

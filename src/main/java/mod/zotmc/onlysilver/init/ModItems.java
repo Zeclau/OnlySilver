@@ -78,7 +78,7 @@ public final class ModItems
 
     // hoes
     public static final RegistryObject<HoeItem> silver_hoe = ITEMS.register("silver_hoe",
-            () -> new HoeItem(OnlySilverItemTier.SILVER,-2.0F,
+            () -> new HoeItem(OnlySilverItemTier.SILVER, -1, -2.0F,
                     new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
 
     // ARMOR

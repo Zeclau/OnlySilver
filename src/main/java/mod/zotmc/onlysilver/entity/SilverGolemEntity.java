@@ -3,7 +3,9 @@ package mod.zotmc.onlysilver.entity;
 import mod.zotmc.onlysilver.init.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
@@ -21,12 +23,13 @@ public class SilverGolemEntity extends IronGolemEntity
         super(type, worldIn);
     }
 
-    @Override
-    protected void registerAttributes()
+    public static AttributeModifierMap.MutableAttribute prepareAttributes()
     {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(35.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 35.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.5D)
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 15.0D);
     }
 
     @Override

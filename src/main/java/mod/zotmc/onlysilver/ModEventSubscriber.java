@@ -11,10 +11,13 @@ import mod.zotmc.onlysilver.api.OnlySilverRegistry;
 import mod.zotmc.onlysilver.config.ConfigHelper;
 import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.enchant.OnlySilverLootModifiers;
+import mod.zotmc.onlysilver.entity.SilverGolemEntity;
 import mod.zotmc.onlysilver.generation.OreGeneration;
 import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
+import mod.zotmc.onlysilver.init.ModEntities;
 import mod.zotmc.onlysilver.init.ModTabGroups;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -45,7 +48,8 @@ public final class ModEventSubscriber
             OreGeneration.setupOreGen();
         });
         OnlySilverRegistry.registerSilverPredicate(new IsOnlySilverItem());
-        
+        GlobalEntityTypeAttributes.put(ModEntities.silver_golem.get(), 
+                                       SilverGolemEntity.prepareAttributes().create());
         LOGGER.debug("Common setup done");
     } // end onCommonSetup
 

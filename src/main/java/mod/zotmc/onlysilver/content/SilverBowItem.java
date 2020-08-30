@@ -14,7 +14,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -85,7 +84,7 @@ public class SilverBowItem extends BowItem
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add((new TranslationTextComponent("onlysilver.tooltip.knockback")).applyTextStyle(TextFormatting.GREEN));
+        tooltip.add((new TranslationTextComponent("onlysilver.tooltip.knockback")));
     }
     
 } // end-class
