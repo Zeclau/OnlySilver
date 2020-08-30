@@ -46,10 +46,10 @@ public final class ModEventSubscriber
     {
         DeferredWorkQueue.runLater( ()-> {
             OreGeneration.setupOreGen();
+            GlobalEntityTypeAttributes.put(ModEntities.silver_golem.get(), 
+                    SilverGolemEntity.prepareAttributes().create());
         });
         OnlySilverRegistry.registerSilverPredicate(new IsOnlySilverItem());
-        GlobalEntityTypeAttributes.put(ModEntities.silver_golem.get(), 
-                                       SilverGolemEntity.prepareAttributes().create());
         LOGGER.debug("Common setup done");
     } // end onCommonSetup
 
