@@ -7,6 +7,9 @@ import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.entity.SilverGolemRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -40,6 +43,9 @@ public final class ClientModEventSubscriber
         // entity renderer
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.silver_golem.get(), 
                 SilverGolemRenderer::new);
+        
+        // bow models.
+        setupBowModelProperties(ModItems.silver_bow.get());
     } // end onFMLClientSetupEvent
 
     @SubscribeEvent
@@ -47,4 +53,17 @@ public final class ClientModEventSubscriber
         event.getItemColors().register((stack, i) -> 0xffffff, ModItems.silver_golem_egg.get());
     }
     
+    private static void setupBowModelProperties(Item bow) 
+    {
+        ItemModelsProperties.func_239418_a_(bow, new ResourceLocation("pull"), (p0, p1, p2) -> {
+            if (p2 == null) {
+               return 0.0F;
+            } else {
+               return p2.getActiveItemStack() != p0 ? 0.0F : (float)(p0.getUseDuration() - p2.getItemInUseCount()) / 20.0F;
+            }
+         });
+        ItemModelsProperties.func_239418_a_(bow, new ResourceLocation("pulling"), (p0, p1, p2) -> {
+            return p2 != null && p2.isHandActive() && p2.getActiveItemStack() == p0 ? 1.0F : 0.0F;
+         });
+    }    
 } // end class
