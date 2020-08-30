@@ -1,9 +1,9 @@
 package mod.zotmc.onlysilver.init;
 
 import mod.zotmc.onlysilver.OnlySilver;
+import mod.zotmc.onlysilver.content.SilverOreBlock;
 import mod.zotmc.onlysilver.content.SimpleMetalBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -24,11 +24,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class ModBlocks
 {
     public static final DeferredRegister<Block> BLOCKS = 
-           DeferredRegister.create(ForgeRegistries.BLOCKS, OnlySilver.MODID);
+           new DeferredRegister<>(ForgeRegistries.BLOCKS, OnlySilver.MODID);
 
     // Ore Blocks
-    public static final RegistryObject<OreBlock> silver_ore = BLOCKS.register("silver_ore",
-            () -> new OreBlock(Block.Properties.create(Material.ROCK)
+    public static final RegistryObject<SilverOreBlock> silver_ore = BLOCKS.register("silver_ore",
+            () -> new SilverOreBlock(Block.Properties.create(Material.ROCK)
                     .hardnessAndResistance( 3.0F, 10.0F)
                     .harvestTool(ToolType.PICKAXE).harvestLevel(1)));
 

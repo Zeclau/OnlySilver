@@ -36,11 +36,14 @@ public class OreGeneration
             else
             {
                 // Overworld
-                biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
-                        Feature.ORE
-                                .withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-                                        ModBlocks.silver_ore.get().getDefaultState(), OnlySilverConfig.silver_veinsize))
-                                .withPlacement(Placement.COUNT_RANGE.configure(OnlySilverConfig.silver_cfg)));
+				biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, 
+								 Biome.createDecoratedFeature(Feature.ORE,
+										 					  new OreFeatureConfig(
+										 							  OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+										 							  ModBlocks.silver_ore.get().getDefaultState(), 
+										 							  OnlySilverConfig.silver_veinsize),
+										 					  Placement.COUNT_RANGE,
+										 					  OnlySilverConfig.silver_cfg));
 
             } // end-else all others
         } // end-for Biome

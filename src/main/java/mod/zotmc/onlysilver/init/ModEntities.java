@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class ModEntities
 {
     public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, OnlySilver.MODID);
+            new DeferredRegister<>(ForgeRegistries.ENTITIES, OnlySilver.MODID);
     
     public static final RegistryObject<EntityType<SilverGolemEntity>> silver_golem = 
             ENTITIES.register("silver_golem", 

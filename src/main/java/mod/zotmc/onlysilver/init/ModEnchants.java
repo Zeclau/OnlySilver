@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class ModEnchants
 {
     public static final DeferredRegister<Enchantment> ENCHANTS = 
-            DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, OnlySilver.MODID);
+            new DeferredRegister<>(ForgeRegistries.ENCHANTMENTS, OnlySilver.MODID);
     
     public static final RegistryObject<SilverAuraEnchantment> silver_aura = 
             ENCHANTS.register("silver_aura", () -> new SilverAuraEnchantment());

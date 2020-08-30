@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class ModSounds
 {
     public static final DeferredRegister<SoundEvent> SOUNDS = 
-            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, OnlySilver.MODID);
+            new DeferredRegister<>(ForgeRegistries.SOUND_EVENTS, OnlySilver.MODID);
     
     public static final RegistryObject<SoundEvent> silvergolem_hit = SOUNDS.register("silvergolem_hit",
             () -> new SoundEvent(new ResourceLocation(OnlySilver.MODID, "silvergolem.hit")));
