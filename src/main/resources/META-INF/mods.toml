@@ -3,7 +3,7 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[31,)" #mandatory
+loaderVersion="[28,)" #mandatory
 issueTrackerURL="https://github.com/Sinhika/OnlySilver/issues"
 logoFile=""
 license="LGPL 3+"
@@ -25,13 +25,13 @@ Additional Credits:
 [[dependencies.onlysilver]]
     modId="forge"
     mandatory=true
-    versionRange="[31.2.0,)"
+    versionRange="[28.2.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.onlysilver]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2,]"
+    versionRange="[1.14.4,]"
     ordering="NONE"
     side="BOTH"
