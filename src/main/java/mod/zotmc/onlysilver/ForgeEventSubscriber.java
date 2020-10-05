@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.enchant.IncantationEnchantment;
 import mod.zotmc.onlysilver.enchant.SilverAuraEnchantment;
+import mod.zotmc.onlysilver.generation.OreGeneration;
 import mod.zotmc.onlysilver.helpers.Utils;
 import mod.zotmc.onlysilver.init.ModEnchants;
 import net.minecraft.entity.item.ItemEntity;
@@ -21,6 +22,8 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -177,7 +180,17 @@ public final class ForgeEventSubscriber
                 }
             } // end-if weapon has Incantation enchant.
         } // end-if player killed.
-
     } // end onLivingDropsEvent()
+    
+    /**
+     * Biome loading triggers ore generation.
+     */
+    @SubscribeEvent(priority=EventPriority.HIGH)
+    public static void onBiomeLoading(BiomeLoadingEvent evt)
+    {
+        if (!OreGeneration.checkAndInitBiome(evt)) return;
+        
+        OreGeneration.generateOverworldOres(evt);
+    } // end onBiomeLoading()
 
 } // end-class

@@ -15,6 +15,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.spawner.AbstractSpawner;
 import net.minecraftforge.common.util.Constants;
 
@@ -60,7 +61,7 @@ public final class SilverGolemEgg extends Item
                 blockpos1 = blockpos.offset(direction);
             }
 
-            if (ModEntities.silver_golem.get().spawn(world, itemstack, context.getPlayer(), blockpos1, 
+            if (ModEntities.silver_golem.get().spawn((ServerWorld) world, itemstack, context.getPlayer(), blockpos1, 
                                                      SpawnReason.SPAWN_EGG, true, 
                             !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) 
             {

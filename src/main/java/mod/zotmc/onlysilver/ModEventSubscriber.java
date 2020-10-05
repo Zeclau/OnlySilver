@@ -12,7 +12,6 @@ import mod.zotmc.onlysilver.config.ConfigHelper;
 import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.enchant.OnlySilverLootModifiers;
 import mod.zotmc.onlysilver.entity.SilverGolemEntity;
-import mod.zotmc.onlysilver.generation.OreGeneration;
 import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModEntities;
@@ -45,7 +44,6 @@ public final class ModEventSubscriber
     public static void onCommonSetup(final FMLCommonSetupEvent event)
     {
         DeferredWorkQueue.runLater( ()-> {
-            OreGeneration.setupOreGen();
             GlobalEntityTypeAttributes.put(ModEntities.silver_golem.get(), 
                     SilverGolemEntity.prepareAttributes().create());
         });

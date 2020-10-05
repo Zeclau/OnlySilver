@@ -1,49 +1,54 @@
 package mod.zotmc.onlysilver.generation;
 
+import mod.alexndr.simplecorelib.world.OreGenUtils;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.gen.GenerationStage.Decoration;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 /**
  * Ore generation master-class for OnlySilver.
  */
 public class OreGeneration
 {
+    protected static ConfiguredFeature<?, ?> ORE_SILVER;
 
     /**
-     * called in setup to generate overworld ores; should respect config entries.
+     * Do we care about this biome? Yes, if overworld or nether, no if THEEND. Also
+     * init relevant Features, if they are null.
      */
-    public static void setupOreGen()
+    public static boolean checkAndInitBiome(BiomeLoadingEvent evt)
     {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues())
+        if (evt.getCategory() != Biome.Category.THEEND && evt.getCategory() != Biome.Category.NETHER)
         {
-            if (biome.getCategory() == Biome.Category.THEEND)
-            {
-                // We have no ores for the End dimension, so this if statement is just so that
-                // we skip biomes in that dimension.
-                continue;
-            }
-            else if (biome.getCategory() == Biome.Category.NETHER)
-            {
-                // We have no ores for the Nether dimension, so this if statement is just so that
-                // we skip biomes in that dimension.
-            } // end-else NETHER
-            else
-            {
-                // Overworld
-                biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
-                        Feature.ORE
-                                .withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
-                                        ModBlocks.silver_ore.get().getDefaultState(), OnlySilverConfig.silver_veinsize))
-                                .withPlacement(Placement.COUNT_RANGE.configure(OnlySilverConfig.silver_cfg)));
+            initOverworldFeatures();
+            return true;
+        }
+        return false;
+    } // end checkBiome
 
-            } // end-else all others
-        } // end-for Biome
-    } // end setupOreGen()
+    /**
+     * initialize overworld Features.
+     * 
+     * @param evt
+     */
+    protected static void initOverworldFeatures()
+    {
+        if (ORE_SILVER == null)
+        {
+            ORE_SILVER = OreGenUtils.buildOverworldOreFeature(
+                    ModBlocks.silver_ore.get().getDefaultState(), OnlySilverConfig.silver_cfg); 
+        }
+    } // end-initOverworldFeatures()
 
+    /**
+     * generate overworld ores.
+     */
+    public static void generateOverworldOres(BiomeLoadingEvent evt)
+    {
+        evt.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, OreGeneration.ORE_SILVER);
+    } // end generateOverworldOres()
+    
 } // end class OreGeneration

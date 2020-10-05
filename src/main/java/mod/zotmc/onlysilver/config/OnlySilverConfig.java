@@ -1,6 +1,6 @@
 package mod.zotmc.onlysilver.config;
 
-import net.minecraft.world.gen.placement.CountRangeConfig;
+import mod.alexndr.simplecorelib.config.ModOreConfig;
 
 public class OnlySilverConfig
 {
@@ -13,7 +13,6 @@ public class OnlySilverConfig
     public static boolean buildSilverGolem = true;
     
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
-    public static CountRangeConfig silver_cfg;
-    public static int silver_veinsize = 5;
+    public static ModOreConfig silver_cfg;
 
 } // end-class

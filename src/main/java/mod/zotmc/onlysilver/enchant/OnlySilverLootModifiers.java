@@ -116,6 +116,12 @@ public class OnlySilverLootModifiers
                 return new IncantationLootModifier(ailootcondition);
             }
 
+            @Override
+            public JsonObject write(IncantationLootModifier instance)
+            {
+                return makeConditions(instance.conditions);
+            }
+
         } // end-class Serializer
     } // end-class IncantationLootModifier
 
