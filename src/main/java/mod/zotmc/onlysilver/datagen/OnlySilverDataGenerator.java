@@ -42,6 +42,7 @@ public class OnlySilverDataGenerator
         if (event.includeServer())
         {
             gen.addProvider(new Recipes(gen));
+            gen.addProvider(new OnlySilverLootTableProvider(gen));
         }
      } // end gatherData()
 
