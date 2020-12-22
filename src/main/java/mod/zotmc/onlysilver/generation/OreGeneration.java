@@ -1,6 +1,7 @@
 package mod.zotmc.onlysilver.generation;
 
 import mod.alexndr.simplecorelib.world.OreGenUtils;
+import mod.zotmc.onlysilver.OnlySilver;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import net.minecraft.world.gen.GenerationStage.Decoration;
@@ -24,6 +25,8 @@ public class OreGeneration
     {
         ORE_SILVER = OreGenUtils.buildOverworldOreFeature(Feature.ORE, ModBlocks.silver_ore.get().getDefaultState(),
                 OnlySilverConfig.silver_cfg);
+        OreGenUtils.registerFeature(OnlySilver.MODID, "silver_vein", ORE_SILVER);
+        
     } // end-initOverworldFeatures()
 
     /**
