@@ -18,6 +18,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -188,9 +189,10 @@ public final class ForgeEventSubscriber
     @SubscribeEvent(priority=EventPriority.HIGH)
     public static void onBiomeLoading(BiomeLoadingEvent evt)
     {
-        if (!OreGeneration.checkAndInitBiome(evt)) return;
-        
-        OreGeneration.generateOverworldOres(evt);
+        if (evt.getCategory() != Biome.Category.THEEND && evt.getCategory() != Biome.Category.NETHER)
+        {
+            OreGeneration.generateOverworldOres(evt);
+        }
     } // end onBiomeLoading()
 
 } // end-class

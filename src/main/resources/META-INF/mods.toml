@@ -38,7 +38,7 @@ Additional Credits:
 [[dependencies.onlysilver]]
     modId="simplecorelib"
     mandatory=true
-    versionRange="[1.16.4-2.0.2.0,)"
+    versionRange="[1.16.4-2.0.4.3,1.16.4-2.0.5.0)"
     ordering="NONE"
     side="BOTH"
 
