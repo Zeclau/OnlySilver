@@ -3,7 +3,7 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[35,)" #mandatory
+loaderVersion="[36,)" #mandatory
 issueTrackerURL="https://github.com/Sinhika/OnlySilver/issues"
 license="LGPL 3+"
 
@@ -11,7 +11,7 @@ license="LGPL 3+"
 modId="onlysilver"
 version="${version}"
 displayName="Zot's Only Silver"
-updateJSONURL="https://raw.githubusercontent.com/Sinhika/OnlySilver/1.16.4/update.json"
+updateJSONURL="https://raw.githubusercontent.com/Sinhika/OnlySilver/1.16/update.json"
 displayURL="http://minecraft.curseforge.com/projects/zots-only-silver"
 credits="Zot201 (original mod), Sinhika (fork, maintenance, ports)."
 authors="Zot201, Sinhika"
@@ -24,21 +24,21 @@ Additional Credits:
 [[dependencies.onlysilver]]
     modId="forge"
     mandatory=true
-    versionRange="[35.0.0,)"
+    versionRange="[36.0.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.onlysilver]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,)"
+    versionRange="[1.16.5,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.onlysilver]]
     modId="simplecorelib"
     mandatory=true
-    versionRange="[1.16.4-2.0.4.3,1.16.4-2.0.5.0)"
+    versionRange="[1.16.5-2.0.5.0,1.16.5-2.0.6.0)"
     ordering="NONE"
     side="BOTH"
 
