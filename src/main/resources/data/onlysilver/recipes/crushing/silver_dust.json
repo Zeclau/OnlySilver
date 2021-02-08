@@ -1,0 +1,22 @@
+{
+    "conditions": [
+        {
+            "modid": "silents_mechanisms",
+            "type": "forge:mod_loaded"
+        }
+    ],
+    "type": "silents_mechanisms:crushing",
+    "process_time": 300,
+    "ingredient": {
+        "item": "onlysilver:crushed_silver_ore"
+    },
+    "results": [
+        {
+            "item": "onlysilver:silver_dust"
+        },
+        {
+            "item": "onlysilver:silver_dust",
+            "chance": 0.1
+        }
+    ]
+}

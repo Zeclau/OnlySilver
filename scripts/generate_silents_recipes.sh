@@ -25,12 +25,12 @@ make_silents_recipes.py --type=crusher --ingredient="${ID}:silver_ingot" \
     --result="${ID}:silver_dust" silver_dust_from_ingot
 
 # crusher -- ore
-make_silents_recipes.py --type=crusher --ticks=400 --ingredient='${ID}:silver_ore' \
-    --result '${ID}:crushed_silver_ore,2' 'minecraft_cobblestone,0.1' \
+make_silents_recipes.py --type=crusher --ticks=400 --ingredient="${ID}:silver_ore" \
+    --result "${ID}:crushed_silver_ore,2" "minecraft_cobblestone,0.1" \
     -- crushed_silver_ore
 
 # crusher -- ore chunks
-make_silents_recipes.py --type=crusher --ingredient='${ID}:crushed_silver_ore' \
-    --result '${ID}:silver_dust' '${ID}:silver_dust,0.1' \
+make_silents_recipes.py --type=crusher --ingredient="${ID}:crushed_silver_ore" \
+    --result "${ID}:silver_dust" "${ID}:silver_dust,0.1" \
     -- silver_dust
 
