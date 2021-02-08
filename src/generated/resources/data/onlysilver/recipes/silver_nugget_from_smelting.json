@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    {
+      "item": "onlysilver:silver_axe"
+    },
+    {
+      "item": "onlysilver:silver_bow"
+    },
+    {
+      "item": "onlysilver:silver_hoe"
+    },
+    {
+      "item": "onlysilver:silver_pickaxe"
+    },
+    {
+      "item": "onlysilver:silver_rod"
+    },
+    {
+      "item": "onlysilver:silver_shovel"
+    },
+    {
+      "item": "onlysilver:silver_sword"
+    },
+    {
+      "item": "onlysilver:silver_wand"
+    },
+    {
+      "item": "onlysilver:silver_boots"
+    },
+    {
+      "item": "onlysilver:silver_chestplate"
+    },
+    {
+      "item": "onlysilver:silver_helmet"
+    },
+    {
+      "item": "onlysilver:silver_leggings"
+    }
+  ],
+  "result": "onlysilver:silver_nugget",
+  "experience": 0.4,
+  "cookingtime": 200
+}

@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "S",
-    "S"
+    "SSS",
+    "S S",
+    "S S"
   ],
   "key": {
     "S": {
@@ -10,6 +11,6 @@
     }
   },
   "result": {
-    "item": "onlysilver:silver_rod"
+    "item": "onlysilver:silver_leggings"
   }
 }

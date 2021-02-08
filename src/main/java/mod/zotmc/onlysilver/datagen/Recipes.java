@@ -66,13 +66,6 @@ public class Recipes extends RecipeProvider implements IConditionBuilder, ISimpl
     
     protected void registerMiscRecipes(Consumer<IFinishedRecipe> consumer)
     {
-        ShapedRecipeBuilder.shapedRecipe(ModItems.silver_rod.get())
-            .key('S', ModTags.Items.INGOTS_SILVER)
-            .patternLine("S  ")
-            .patternLine("S  ")
-            .addCriterion("has_item", hasItem(ModTags.Items.INGOTS_SILVER))
-            .build(consumer);
-        
         ShapedRecipeBuilder.shapedRecipe(ModItems.silver_wand.get())
             .key('O', ModTags.Items.NUGGETS_SILVER)
             .key('I', ModTags.Items.RODS_SILVER)

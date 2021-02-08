@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " XY",
+    "Z Y",
+    " XY"
+  ],
+  "key": {
+    "X": {
+      "item": "onlysilver:silver_rod"
+    },
+    "Y": {
+      "tag": "forge:string"
+    },
+    "Z": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "onlysilver:silver_bow"
+  }
+}
