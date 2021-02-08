@@ -39,6 +39,10 @@ public final class ModItems
             ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> silver_nugget = ITEMS.register("silver_nugget",
             ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+    public static final RegistryObject<Item> silver_dust = ITEMS.register("silver_dust",
+            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+    public static final RegistryObject<Item> crushed_silver_ore = ITEMS.register("crushed_silver_ore",
+            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
 
     // parts & misc
     public static final RegistryObject<SilverWandItem> silver_wand = ITEMS.register("silver_wand",

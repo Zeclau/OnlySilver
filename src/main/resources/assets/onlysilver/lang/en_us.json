@@ -1,6 +1,7 @@
 {
     "_comment": "OnlySilver language file en_US",
-    "_comment": "Vanilla Items",
+    "itemGroup.onlysilver": "OnlySilver",
+
     "block.onlysilver.silver_ore": "Silver Ore",
     "block.onlysilver.silver_block": "Silver Block",
     "item.onlysilver.silver_ingot": "Silver Ingot",
@@ -18,28 +19,21 @@
     "item.onlysilver.silver_leggings": "Silver Leggings",
     "item.onlysilver.silver_boots": "Silver Boots",
     "item.onlysilver.silver_golem_egg": "Silver Golem Egg",
-
-    "_comment": "Enchantments",
+	"item.onlysilver.silver_dust" : "Silver Dust",
+	"item.onlysilver.crushed_silver_ore" : "Silver Chunks",
+	
     "enchantment.onlysilver.silver_aura": "Everlasting",
     "enchantment.onlysilver.incantation": "Incantation",
 
-    "_comment": "Tooltips",
     "onlysilver.tooltip.knockback": "+Knockback",
 
-    "_comment": "Entities",
     "entity.onlysilver.silver_golem": "Silver Golem",
 
-    "_comment": "Creative Tabs",
-    "itemGroup.onlysilver": "OnlySilver",
-
-    "_comment": "Achievements",
     "achievement.silver_bow_ach": "A New... Bow?",
     "achievement.silver_bow_ach.desc": "Forge a new bow with magical properties",
 
-    "_comment": "Customized World Type Settings",
     "onlysilver.customize.silver_ore": "%s (%s)",
 
-    "_comment": "OnlySilver Options",
     "onlysilver.options.title": "%s %s",
     "onlysilver.options.default": "%s: %s",
     "onlysilver.options.ore_generation": "Ore Generation",
