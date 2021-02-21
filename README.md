@@ -10,6 +10,8 @@ OnlySilver for 1.14.4/1.15.2 and later is an add-on for SimpleOres, with a requi
 
 ## Features, aka TODO list
 
+* Add silver items to loot tables/ random chance for injected loot, instead of 100% guaranteed.
+
 * Mobs  
      * <s>Silver Golem</s>  
      * <s>Tiny and fast moving</s>    
