@@ -7,14 +7,14 @@ import java.util.function.Supplier;
 
 import com.mojang.datafixers.util.Pair;
 
-import mod.alexndr.simplecorelib.datagen.AbstractLootTableProvider;
+import mod.alexndr.simplecorelib.datagen.BlockLootTableProvider;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.loot.LootParameterSet;
 import net.minecraft.loot.LootTable.Builder;
 import net.minecraft.util.ResourceLocation;
 
-public class OnlySilverLootTableProvider extends AbstractLootTableProvider
+public class OnlySilverLootTableProvider extends BlockLootTableProvider
 {
 
     public OnlySilverLootTableProvider(DataGenerator dataGeneratorIn)
