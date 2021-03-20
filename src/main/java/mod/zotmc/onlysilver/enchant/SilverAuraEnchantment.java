@@ -9,8 +9,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
-import net.minecraft.enchantment.Enchantment.Rarity;
-
 public class SilverAuraEnchantment extends Enchantment
 {
     public static final String extendedLifeTag = OnlySilver.MODID + "-lifeExtended";

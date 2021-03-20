@@ -9,8 +9,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-import net.minecraft.enchantment.Enchantment.Rarity;
-
 public class IncantationEnchantment extends Enchantment
 {
 

@@ -23,8 +23,6 @@ import net.minecraft.util.CachedBlockInfo;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import net.minecraft.item.Item.Properties;
-
 public class SilverWandItem extends Item
 {
     @Nullable
