@@ -9,7 +9,7 @@ import net.minecraft.util.LazyValue;
 
 public enum OnlySilverItemTier implements IItemTier
 {
-   SILVER(2, 226, 8.0F, 2.0F, 30, ()->{ return Ingredient.fromItems( ModItems.silver_ingot.get()); });
+   SILVER(2, 226, 8.0F, 2.0F, 30, ()->{ return Ingredient.of( ModItems.silver_ingot.get()); });
 
    private final int harvestLevel;
    private final int maxUses;
@@ -30,32 +30,32 @@ public enum OnlySilverItemTier implements IItemTier
    }
 
    @Override
-   public int getMaxUses() {
+   public int getUses() {
       return this.maxUses;
    }
 
    @Override
-   public float getEfficiency() {
+   public float getSpeed() {
       return this.efficiency;
    }
 
    @Override
-   public float getAttackDamage() {
+   public float getAttackDamageBonus() {
       return this.attackDamage;
    }
 
    @Override
-   public int getHarvestLevel() {
+   public int getLevel() {
       return this.harvestLevel;
    }
 
    @Override
-   public int getEnchantability() {
+   public int getEnchantmentValue() {
       return this.enchantability;
    }
 
    @Override
-   public Ingredient getRepairMaterial() {
-      return this.repairMaterial.getValue();
+   public Ingredient getRepairIngredient() {
+      return this.repairMaterial.get();
    }
 }  // end class SimpleOresItemTier

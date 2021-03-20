@@ -36,20 +36,20 @@ public final class ModItems
 
     // ingots and nuggets
     public static final RegistryObject<Item> silver_ingot = ITEMS.register("silver_ingot", 
-            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new Item(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> silver_nugget = ITEMS.register("silver_nugget",
-            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new Item(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> silver_dust = ITEMS.register("silver_dust",
-            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new Item(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<Item> crushed_silver_ore = ITEMS.register("crushed_silver_ore",
-            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new Item(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // parts & misc
     public static final RegistryObject<SilverWandItem> silver_wand = ITEMS.register("silver_wand",
-            ()-> new SilverWandItem(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new SilverWandItem(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     
     public static final RegistryObject<Item> silver_rod = ITEMS.register("silver_rod",
-            ()-> new Item(new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+            ()-> new Item(new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     
     public static final RegistryObject<SilverGolemEgg> silver_golem_egg = ITEMS.register("silver_golem_egg",
              SilverGolemEgg::new);
@@ -57,48 +57,48 @@ public final class ModItems
     // TOOLS & WEAPONS
     // bows
     public static final RegistryObject<SilverBowItem> silver_bow = ITEMS.register("silver_bow",
-            () -> new SilverBowItem(new Item.Properties().maxDamage(OnlySilverItemTier.SILVER.getMaxUses() * 2 + 1)
-                    .group(ModTabGroups.MOD_ITEM_GROUP)));
+            () -> new SilverBowItem(new Item.Properties().durability(OnlySilverItemTier.SILVER.getUses() * 2 + 1)
+                    .tab(ModTabGroups.MOD_ITEM_GROUP)));
             
     // swords
     public static final RegistryObject<SwordItem> silver_sword = ITEMS.register("silver_sword",
             () -> new SwordItem(OnlySilverItemTier.SILVER, 3, -2.4F,
-                                new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                                new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // pickaxes
     public static final RegistryObject<PickaxeItem> silver_pickaxe = ITEMS.register("silver_pickaxe",
             () -> new PickaxeItem(OnlySilverItemTier.SILVER, 1, -2.8F,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // axes
     public static final RegistryObject<AxeItem> silver_axe = ITEMS.register("silver_axe",
             () -> new AxeItem(OnlySilverItemTier.SILVER, 7.0F, -3.1F,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // shovels
     public static final RegistryObject<ShovelItem> silver_shovel = ITEMS.register("silver_shovel",
             () -> new ShovelItem(OnlySilverItemTier.SILVER, 1.5F, -3.0F,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // hoes
     public static final RegistryObject<HoeItem> silver_hoe = ITEMS.register("silver_hoe",
             () -> new HoeItem(OnlySilverItemTier.SILVER, -1, -2.0F,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
 
     // ARMOR
     // silver
     public static final RegistryObject<ArmorItem> silver_helmet = ITEMS.register("silver_helmet",
             () -> new ArmorItem(OnlySilverArmorMaterial.SILVER, EquipmentSlotType.HEAD,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<ArmorItem> silver_leggings = ITEMS.register("silver_leggings",
             () -> new ArmorItem(OnlySilverArmorMaterial.SILVER, EquipmentSlotType.LEGS,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<ArmorItem> silver_chestplate = ITEMS.register("silver_chestplate",
             () -> new ArmorItem(OnlySilverArmorMaterial.SILVER, EquipmentSlotType.CHEST,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     public static final RegistryObject<ArmorItem> silver_boots = ITEMS.register("silver_boots",
             () -> new ArmorItem(OnlySilverArmorMaterial.SILVER, EquipmentSlotType.FEET,
-                    new Item.Properties().group(ModTabGroups.MOD_ITEM_GROUP)));
+                    new Item.Properties().tab(ModTabGroups.MOD_ITEM_GROUP)));
     
     
 } // end class

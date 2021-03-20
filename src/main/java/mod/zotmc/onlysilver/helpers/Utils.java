@@ -26,11 +26,11 @@ public final class Utils
     
     public static boolean heldItemHasEnch(PlayerEntity player, Enchantment ench) 
     {
-        if (Utils.hasEnch(player.getHeldItemMainhand(), ench))
+        if (Utils.hasEnch(player.getMainHandItem(), ench))
         {
             return true;
         }
-        else if (Utils.hasEnch(player.getHeldItemOffhand(), ench))
+        else if (Utils.hasEnch(player.getOffhandItem(), ench))
         {
             return true;
         }
@@ -40,13 +40,13 @@ public final class Utils
     public static ItemStack getHeldItemWithEnch(PlayerEntity player, Enchantment ench)
     {
         ItemStack heldItem = ItemStack.EMPTY;
-        if (Utils.hasEnch(player.getHeldItemMainhand(), ModEnchants.incantation.get()))
+        if (Utils.hasEnch(player.getMainHandItem(), ModEnchants.incantation.get()))
         {
-            heldItem = player.getHeldItemMainhand();
+            heldItem = player.getMainHandItem();
         }
-        else if (Utils.hasEnch(player.getHeldItemOffhand(), ModEnchants.incantation.get()))
+        else if (Utils.hasEnch(player.getOffhandItem(), ModEnchants.incantation.get()))
         {
-            heldItem = player.getHeldItemOffhand();
+            heldItem = player.getOffhandItem();
         }
         return heldItem;
     } // end getHeldItemWithEnch()

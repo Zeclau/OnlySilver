@@ -9,6 +9,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
+import net.minecraft.enchantment.Enchantment.Rarity;
+
 public class SilverAuraEnchantment extends Enchantment
 {
     public static final String extendedLifeTag = OnlySilver.MODID + "-lifeExtended";
@@ -19,15 +21,15 @@ public class SilverAuraEnchantment extends Enchantment
     }
 
     @Override
-    public int getMinEnchantability(int enchantmentLevel)
+    public int getMinCost(int enchantmentLevel)
     {
         return 5 + 20 * (enchantmentLevel - 1);
     }
 
     @Override
-    public int getMaxEnchantability(int enchantmentLevel)
+    public int getMaxCost(int enchantmentLevel)
     {
-        return super.getMaxEnchantability(enchantmentLevel) + 50;
+        return super.getMaxCost(enchantmentLevel) + 50;
     }
 
     /**
@@ -40,17 +42,17 @@ public class SilverAuraEnchantment extends Enchantment
     }
 
     @Override
-    public int calcModifierDamage(int level, DamageSource source)
+    public int getDamageProtection(int level, DamageSource source)
     {
         // TODO Auto-generated method stub
-        return super.calcModifierDamage(level, source);
+        return super.getDamageProtection(level, source);
     }
 
     @Override
-    public float calcDamageByCreature(int level, CreatureAttribute creatureType)
+    public float getDamageBonus(int level, CreatureAttribute creatureType)
     {
         // TODO Auto-generated method stub
-        return super.calcDamageByCreature(level, creatureType);
+        return super.getDamageBonus(level, creatureType);
     }
 
     @Override

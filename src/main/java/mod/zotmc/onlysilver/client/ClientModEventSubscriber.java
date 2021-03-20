@@ -36,7 +36,7 @@ public final class ClientModEventSubscriber
     {
         // ores with cutouts.
         RenderTypeLookup.setRenderLayer(ModBlocks.silver_ore.get(), (layer) -> layer 
-                == RenderType.getCutout());
+                == RenderType.cutout());
         
         // entity renderer
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.silver_golem.get(), 

@@ -19,6 +19,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import net.minecraft.item.Item.Properties;
+
 public class SilverBowItem extends BowItem
 {
 
@@ -29,13 +31,13 @@ public class SilverBowItem extends BowItem
 
     
     @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft)
+    public void releaseUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft)
     {
         // add the default enchantments for Mythril bow.
         Map<Enchantment,Integer> oldEnchants = EnchantmentHelper.getEnchantments(stack);
         stack = this.addSilverEnchantments(oldEnchants, stack);
 
-        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
+        super.releaseUsing(stack, worldIn, entityLiving, timeLeft);
 
         // remove temporary intrinsic enchantments.
         EnchantmentHelper.setEnchantments(oldEnchants, stack);
@@ -53,15 +55,15 @@ public class SilverBowItem extends BowItem
         Map<Enchantment,Integer> enchMap = new HashMap<>(oldEnch);
 
         // increment PUNCH strength by 2.
-        if (!enchMap.containsKey(Enchantments.PUNCH))
+        if (!enchMap.containsKey(Enchantments.PUNCH_ARROWS))
         {
-            enchMap.put(Enchantments.PUNCH, 2);
+            enchMap.put(Enchantments.PUNCH_ARROWS, 2);
         }
         else // contains PUNCH enchantment; make it stronger. 
         {
-            int k = enchMap.get(Enchantments.PUNCH);
+            int k = enchMap.get(Enchantments.PUNCH_ARROWS);
             k += 2;
-            enchMap.replace(Enchantments.PUNCH, k);
+            enchMap.replace(Enchantments.PUNCH_ARROWS, k);
         }
         
         // add intrinsic enchantments, if any.
@@ -73,17 +75,17 @@ public class SilverBowItem extends BowItem
     
     
     @Override
-    public int getItemEnchantability()
+    public int getEnchantmentValue()
     {
-        return OnlySilverItemTier.SILVER.getEnchantability() / 3;
+        return OnlySilverItemTier.SILVER.getEnchantmentValue() / 3;
     }
 
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add((new TranslationTextComponent("onlysilver.tooltip.knockback")));
     }
     

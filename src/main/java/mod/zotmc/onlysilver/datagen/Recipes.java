@@ -33,7 +33,7 @@ public class Recipes extends RecipeProvider implements IConditionBuilder, ISimpl
         setbuilder = new RecipeSetBuilder(OnlySilver.MODID);
     }
 
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
+    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer)
     {
         registerStorageRecipes(consumer);
         registerMiscRecipes(consumer);
@@ -44,61 +44,61 @@ public class Recipes extends RecipeProvider implements IConditionBuilder, ISimpl
     
     protected void registerToolRecipes(Consumer<IFinishedRecipe> consumer)
     {
-        setbuilder.buildSimpleToolSet(consumer, Ingredient.fromTag(ModTags.Items.INGOTS_SILVER),
-                "silver", hasItem(ModTags.Items.INGOTS_SILVER), null, false);
-        setbuilder.buildModBowRecipe(consumer, ModItems.silver_bow.getId(), Ingredient.fromTag(ModTags.Items.INGOTS_SILVER),
-                ModItems.silver_rod.get(), Ingredient.fromTag(Tags.Items.INGOTS_IRON), 
-                hasItem(ModTags.Items.INGOTS_SILVER), null);
+        setbuilder.buildSimpleToolSet(consumer, Ingredient.of(ModTags.Items.INGOTS_SILVER),
+                "silver", has(ModTags.Items.INGOTS_SILVER), null, false);
+        setbuilder.buildModBowRecipe(consumer, ModItems.silver_bow.getId(), Ingredient.of(ModTags.Items.INGOTS_SILVER),
+                ModItems.silver_rod.get(), Ingredient.of(Tags.Items.INGOTS_IRON), 
+                has(ModTags.Items.INGOTS_SILVER), null);
         
     } // end registerToolRecipes()
     
     protected void registerArmorRecipes(Consumer<IFinishedRecipe> consumer)
     {
-        setbuilder.buildSimpleArmorSet(consumer, Ingredient.fromTag(ModTags.Items.INGOTS_SILVER), "silver", 
-                hasItem(ModTags.Items.INGOTS_SILVER), null);
+        setbuilder.buildSimpleArmorSet(consumer, Ingredient.of(ModTags.Items.INGOTS_SILVER), "silver", 
+                has(ModTags.Items.INGOTS_SILVER), null);
     } // end registerArmorRecipes()
     
     protected void registerStorageRecipes(Consumer<IFinishedRecipe> consumer)
     {
         setbuilder.buildSimpleStorageRecipes(consumer, ModItems.silver_ingot.get(), ModBlocks.silver_block.get(), 
-                ModItems.silver_nugget.get(), hasItem(ModTags.Items.INGOTS_SILVER));
+                ModItems.silver_nugget.get(), has(ModTags.Items.INGOTS_SILVER));
     } // end registerStorageRecipes()
     
     protected void registerMiscRecipes(Consumer<IFinishedRecipe> consumer)
     {
-        ShapedRecipeBuilder.shapedRecipe(ModItems.silver_wand.get())
-            .key('O', ModTags.Items.NUGGETS_SILVER)
-            .key('I', ModTags.Items.RODS_SILVER)
-            .patternLine("O")
-            .patternLine("I")
-            .addCriterion("has_item", hasItem(ModTags.Items.RODS_SILVER))
-            .build(consumer);
+        ShapedRecipeBuilder.shaped(ModItems.silver_wand.get())
+            .define('O', ModTags.Items.NUGGETS_SILVER)
+            .define('I', ModTags.Items.RODS_SILVER)
+            .pattern("O")
+            .pattern("I")
+            .unlockedBy("has_item", has(ModTags.Items.RODS_SILVER))
+            .save(consumer);
     } // end registerMiscRecipes()
 
     protected void registerFurnaceRecipes(Consumer<IFinishedRecipe> consumer)
     {
         // ore => ingots
-        setbuilder.buildOre2IngotRecipes(consumer, Ingredient.fromItems(ModBlocks.silver_ore.get()),
-                ModItems.silver_ingot.get(), hasItem(ModBlocks.silver_ore.get()), 0.8F, 200);
+        setbuilder.buildOre2IngotRecipes(consumer, Ingredient.of(ModBlocks.silver_ore.get()),
+                ModItems.silver_ingot.get(), has(ModBlocks.silver_ore.get()), 0.8F, 200);
         
         // crushed ore => ingots
-        setbuilder.buildOre2IngotRecipes(consumer,Ingredient.fromItems(ModItems.crushed_silver_ore.get()), 
-                ModItems.silver_ingot.get(), hasItem(ModItems.crushed_silver_ore.get()),  0.8F, 200,
+        setbuilder.buildOre2IngotRecipes(consumer,Ingredient.of(ModItems.crushed_silver_ore.get()), 
+                ModItems.silver_ingot.get(), has(ModItems.crushed_silver_ore.get()),  0.8F, 200,
                 "_from_chunks");
                 
         // dust => ingots
-        setbuilder.buildOre2IngotRecipes(consumer, Ingredient.fromItems(ModItems.silver_dust.get()),
-                ModItems.silver_ingot.get(),  hasItem(ModItems.silver_dust.get()), 0.8F, 200,
+        setbuilder.buildOre2IngotRecipes(consumer, Ingredient.of(ModItems.silver_dust.get()),
+                ModItems.silver_ingot.get(),  has(ModItems.silver_dust.get()), 0.8F, 200,
                 "_from_dust");
         
         // vanilla recycling, tools/armor => nuggets
         setbuilder.buildVanillaRecyclingRecipes(consumer, 
-                Ingredient.fromItems(ModItems.silver_axe.get(), ModItems.silver_bow.get(),
+                Ingredient.of(ModItems.silver_axe.get(), ModItems.silver_bow.get(),
                         ModItems.silver_hoe.get(), ModItems.silver_pickaxe.get(), ModItems.silver_rod.get(),
                         ModItems.silver_shovel.get(), ModItems.silver_sword.get(), ModItems.silver_wand.get(),
                         ModItems.silver_boots.get(), ModItems.silver_chestplate.get(),
                         ModItems.silver_helmet.get(), ModItems.silver_leggings.get()),
-                ModItems.silver_nugget.get(), hasItem(ModItems.silver_axe.get()), 0.4F, 200);
+                ModItems.silver_nugget.get(), has(ModItems.silver_axe.get()), 0.4F, 200);
         
     } // end registerFurnaceRecipes()
 

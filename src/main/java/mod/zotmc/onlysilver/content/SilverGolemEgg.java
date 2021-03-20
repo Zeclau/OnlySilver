@@ -24,29 +24,29 @@ public final class SilverGolemEgg extends Item
 
     public SilverGolemEgg()
     {
-        super(new Item.Properties().maxStackSize(1).group(ModTabGroups.MOD_ITEM_GROUP));
+        super(new Item.Properties().stacksTo(1).tab(ModTabGroups.MOD_ITEM_GROUP));
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context)
+    public ActionResultType useOn(ItemUseContext context)
     {
-        World world = context.getWorld();
-        if (world.isRemote) {
+        World world = context.getLevel();
+        if (world.isClientSide) {
             return ActionResultType.SUCCESS;
         }
         else 
         {
-            ItemStack itemstack = context.getItem();
-            BlockPos blockpos = context.getPos();
-            Direction direction = context.getFace();
+            ItemStack itemstack = context.getItemInHand();
+            BlockPos blockpos = context.getClickedPos();
+            Direction direction = context.getClickedFace();
             BlockState blockstate = world.getBlockState(blockpos);
-            TileEntity tileentity = world.getTileEntity(blockpos);
+            TileEntity tileentity = world.getBlockEntity(blockpos);
             if (tileentity instanceof MobSpawnerTileEntity) 
             {
-                AbstractSpawner abstractspawner = ((MobSpawnerTileEntity) tileentity).getSpawnerBaseLogic();
-                abstractspawner.setEntityType(ModEntities.silver_golem.get());
-                tileentity.markDirty();
-                world.notifyBlockUpdate(blockpos, blockstate, blockstate, 
+                AbstractSpawner abstractspawner = ((MobSpawnerTileEntity) tileentity).getSpawner();
+                abstractspawner.setEntityId(ModEntities.silver_golem.get());
+                tileentity.setChanged();
+                world.sendBlockUpdated(blockpos, blockstate, blockstate, 
                         Constants.BlockFlags.BLOCK_UPDATE + Constants.BlockFlags.NOTIFY_NEIGHBORS);
                 itemstack.shrink(1);
                 return ActionResultType.SUCCESS;
@@ -58,7 +58,7 @@ public final class SilverGolemEgg extends Item
                 blockpos1 = blockpos;
             } 
             else {
-                blockpos1 = blockpos.offset(direction);
+                blockpos1 = blockpos.relative(direction);
             }
 
             if (ModEntities.silver_golem.get().spawn((ServerWorld) world, itemstack, context.getPlayer(), blockpos1, 

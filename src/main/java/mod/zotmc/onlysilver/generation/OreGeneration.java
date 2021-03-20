@@ -23,7 +23,7 @@ public class OreGeneration
      */
     public static void initOverworldFeatures()
     {
-        ORE_SILVER = OreGenUtils.buildOverworldOreFeature(Feature.ORE, ModBlocks.silver_ore.get().getDefaultState(),
+        ORE_SILVER = OreGenUtils.buildOverworldOreFeature(Feature.ORE, ModBlocks.silver_ore.get().defaultBlockState(),
                 OnlySilverConfig.silver_cfg);
         OreGenUtils.registerFeature(OnlySilver.MODID, "silver_vein", ORE_SILVER);
         
@@ -34,7 +34,7 @@ public class OreGeneration
      */
     public static void generateOverworldOres(BiomeLoadingEvent evt)
     {
-        evt.getGeneration().withFeature(Decoration.UNDERGROUND_ORES, OreGeneration.ORE_SILVER);
+        evt.getGeneration().addFeature(Decoration.UNDERGROUND_ORES, OreGeneration.ORE_SILVER);
     } // end generateOverworldOres()
     
 } // end class OreGeneration

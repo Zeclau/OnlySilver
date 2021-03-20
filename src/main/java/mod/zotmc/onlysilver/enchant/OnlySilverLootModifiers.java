@@ -49,7 +49,7 @@ public class OnlySilverLootModifiers
                 return generatedLoot;
             }
             // loot dropper must be a mob, killed by a player, otherwise no action.
-            if (!(context.has(LootParameters.LAST_DAMAGE_PLAYER) && context.has(LootParameters.THIS_ENTITY)))
+            if (!(context.hasParam(LootParameters.LAST_DAMAGE_PLAYER) && context.hasParam(LootParameters.THIS_ENTITY)))
             {
                 LOGGER.debug("not dropped by a player-killed mob");
                 return generatedLoot;
@@ -57,10 +57,10 @@ public class OnlySilverLootModifiers
             else
             {
                 // must be a mob.
-                Entity loot_dropper = context.get(LootParameters.THIS_ENTITY);
+                Entity loot_dropper = context.getParamOrNull(LootParameters.THIS_ENTITY);
                 if (loot_dropper instanceof LivingEntity)
                 {
-                    PlayerEntity player = context.get(LootParameters.LAST_DAMAGE_PLAYER);
+                    PlayerEntity player = context.getParamOrNull(LootParameters.LAST_DAMAGE_PLAYER);
 
                     ItemStack weapon = Utils.getHeldItemWithEnch(player, ModEnchants.incantation.get());
                     if (weapon.isEmpty()) 
@@ -82,7 +82,7 @@ public class OnlySilverLootModifiers
                             }
                             else if (drop.isEmpty()) {
                                 if (drop != ItemStack.EMPTY) {
-                                    LOGGER.debug("Broken/Missing item is " + drop.getDisplayName().getString());
+                                    LOGGER.debug("Broken/Missing item is " + drop.getHoverName().getString());
                                 }
                                 ret.add(drop);
                             }
@@ -95,7 +95,7 @@ public class OnlySilverLootModifiers
                                 // LOGGER.debug("Apply random enchantment to " +  drop.getDisplayName().getString() + "!");
                                 ItemStack newdrop = drop.copy();
                                 IncantationEnchantment.applyIncantation(player, weapon, newdrop);
-                                LOGGER.debug("Random enchantment applied to " +  newdrop.getDisplayName().getString() + "!");
+                                LOGGER.debug("Random enchantment applied to " +  newdrop.getHoverName().getString() + "!");
                                 ret.add(newdrop);
                             } // end-else
                         } // end-for

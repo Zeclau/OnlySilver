@@ -72,7 +72,7 @@ public final class ForgeEventSubscriber
                 CompoundNBT tag = stack.getOrCreateTag();
                 if (!tag.getBoolean(SilverAuraEnchantment.extendedLifeTag))
                 {
-                    event.setExtraLife(stack.getEntityLifespan(entity.world) * 2);
+                    event.setExtraLife(stack.getEntityLifespan(entity.level) * 2);
                     event.setCanceled(true);
                     tag.putBoolean(SilverAuraEnchantment.extendedLifeTag, true);
                 }
@@ -146,16 +146,16 @@ public final class ForgeEventSubscriber
     public static void onLivingDropsEvent(final LivingDropsEvent event)
     {
         // skip client-side.
-        World ourWorld = event.getEntity().getEntityWorld();
-        if (ourWorld.isRemote)
+        World ourWorld = event.getEntity().getCommandSenderWorld();
+        if (ourWorld.isClientSide)
         {
             return;
         }
         DamageSource damage = event.getSource();
         // did the player kill it?
-        if (damage.getTrueSource() != null && damage.getTrueSource() instanceof PlayerEntity)
+        if (damage.getEntity() != null && damage.getEntity() instanceof PlayerEntity)
         {
-            PlayerEntity killer = (PlayerEntity) damage.getTrueSource();
+            PlayerEntity killer = (PlayerEntity) damage.getEntity();
 
             // does player have incantation enchantment on weapon?
             if (Utils.heldItemHasEnch(killer, ModEnchants.incantation.get()))

@@ -23,6 +23,8 @@ import net.minecraft.util.CachedBlockInfo;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import net.minecraft.item.Item.Properties;
+
 public class SilverWandItem extends Item
 {
     @Nullable
@@ -40,14 +42,14 @@ public class SilverWandItem extends Item
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context)
+    public ActionResultType useOn(ItemUseContext context)
     {
-        ActionResultType result = super.onItemUse(context);
+        ActionResultType result = super.useOn(context);
         
-        World world = context.getWorld();
-        BlockPos pos = context.getPos();
+        World world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         
-        if (world.isRemote) 
+        if (world.isClientSide) 
         {
             return ActionResultType.SUCCESS;
         }
@@ -83,35 +85,35 @@ public class SilverWandItem extends Item
         }
 
         // is block clicked part of silver_golem pattern?
-        BlockPattern.PatternHelper patternhelper = this.getSilverGolemPattern().match(worldIn, pos);
+        BlockPattern.PatternHelper patternhelper = this.getSilverGolemPattern().find(worldIn, pos);
         if (patternhelper != null) 
         {
             // replace the golem constituent blocks with air.
-            for(int i = 0; i < this.getSilverGolemPattern().getThumbLength(); ++i) 
+            for(int i = 0; i < this.getSilverGolemPattern().getHeight(); ++i) 
             {
-                CachedBlockInfo cachedblockinfo = patternhelper.translateOffset(0, i, 0);
-                worldIn.setBlockState(cachedblockinfo.getPos(), Blocks.AIR.getDefaultState(), 2);
-                worldIn.playEvent(2001, cachedblockinfo.getPos(), Block.getStateId(cachedblockinfo.getBlockState()));
+                CachedBlockInfo cachedblockinfo = patternhelper.getBlock(0, i, 0);
+                worldIn.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
+                worldIn.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
             } // end-for
             
             // spawn the golem, and give credit to the player for summoning it.
             SilverGolemEntity golem = ModEntities.silver_golem.get().create(worldIn);
             golem.setPlayerCreated(true);
-            golem.setLocationAndAngles((double)pos.getX() + 0.5D, (double)pos.getY() + 0.05D, (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
-            worldIn.addEntity(golem);
+            golem.moveTo((double)pos.getX() + 0.5D, (double)pos.getY() + 0.05D, (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
+            worldIn.addFreshEntity(golem);
 
-            for(ServerPlayerEntity serverplayerentity1 : worldIn.getEntitiesWithinAABB(ServerPlayerEntity.class, golem.getBoundingBox().grow(5.0D))) 
+            for(ServerPlayerEntity serverplayerentity1 : worldIn.getEntitiesOfClass(ServerPlayerEntity.class, golem.getBoundingBox().inflate(5.0D))) 
             {
                 CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity1, golem);
             }
 
             // notify neighboring blocks that constituent blocks have been changed to air.
-            for(int i1 = 0; i1 < this.getSilverGolemPattern().getPalmLength(); ++i1) 
+            for(int i1 = 0; i1 < this.getSilverGolemPattern().getWidth(); ++i1) 
             {
-                for(int j1 = 0; j1 < this.getSilverGolemPattern().getThumbLength(); ++j1) 
+                for(int j1 = 0; j1 < this.getSilverGolemPattern().getHeight(); ++j1) 
                 {
-                   CachedBlockInfo cachedblockinfo1 = patternhelper.translateOffset(i1, j1, 0);
-                   worldIn.notifyNeighborsOfStateChange(cachedblockinfo1.getPos(), Blocks.AIR);
+                   CachedBlockInfo cachedblockinfo1 = patternhelper.getBlock(i1, j1, 0);
+                   worldIn.updateNeighborsAt(cachedblockinfo1.getPos(), Blocks.AIR);
                 } // end for j1
              } // end for i1
             return true;  // SUCCESS!

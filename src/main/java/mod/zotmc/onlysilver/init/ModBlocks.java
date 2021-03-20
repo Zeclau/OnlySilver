@@ -28,14 +28,14 @@ public final class ModBlocks
 
     // Ore Blocks
     public static final RegistryObject<OreBlock> silver_ore = BLOCKS.register("silver_ore",
-            () -> new OreBlock(Block.Properties.create(Material.ROCK)
-                    .hardnessAndResistance( 3.0F, 10.0F).setRequiresTool()
+            () -> new OreBlock(Block.Properties.of(Material.STONE)
+                    .strength( 3.0F, 10.0F).requiresCorrectToolForDrops()
                     .harvestTool(ToolType.PICKAXE).harvestLevel(1)));
 
     // Metal Blocks
     public static final RegistryObject<Block> silver_block = BLOCKS.register("silver_block",
-            () -> new Block(Block.Properties.create(Material.IRON)
-                    .hardnessAndResistance(7.0F, 12.0F).setRequiresTool()
+            () -> new Block(Block.Properties.of(Material.METAL)
+                    .strength(7.0F, 12.0F).requiresCorrectToolForDrops()
                     .sound(SoundType.METAL)
                     .harvestTool(ToolType.PICKAXE).harvestLevel(0)));
 

@@ -25,11 +25,11 @@ public class SilverGolemEntity extends IronGolemEntity
 
     public static AttributeModifierMap.MutableAttribute prepareAttributes()
     {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 35.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.5D)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 15.0D);
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 35.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.5D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+                .add(Attributes.ATTACK_DAMAGE, 15.0D);
     }
 
     @Override
@@ -47,22 +47,22 @@ public class SilverGolemEntity extends IronGolemEntity
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn)
     {
-        super.playSound(SoundEvents.ENTITY_IRON_GOLEM_STEP, 1.3322327F, 1);
+        super.playSound(SoundEvents.IRON_GOLEM_STEP, 1.3322327F, 1);
     }
 
     @Override
-    public boolean isPotionApplicable(EffectInstance potioneffectIn)
+    public boolean canBeAffected(EffectInstance potioneffectIn)
     {
-        Effect effect = potioneffectIn.getPotion();
+        Effect effect = potioneffectIn.getEffect();
         if (effect == Effects.POISON) {
             return false;
         }
-        return super.isPotionApplicable(potioneffectIn);
+        return super.canBeAffected(potioneffectIn);
     }
 
     @Override public void playSound(SoundEvent sound, float volume, float pitch) 
     {
-        if (sound != SoundEvents.ENTITY_IRON_GOLEM_ATTACK) {
+        if (sound != SoundEvents.IRON_GOLEM_ATTACK) {
             volume *= 1.6271853F;
         }
         super.playSound(sound, volume, pitch);

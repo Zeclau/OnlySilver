@@ -9,6 +9,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
+import net.minecraft.enchantment.Enchantment.Rarity;
+
 public class IncantationEnchantment extends Enchantment
 {
 
@@ -24,15 +26,15 @@ public class IncantationEnchantment extends Enchantment
     }
 
     @Override
-    public int getMinEnchantability(int enchantmentLevel)
+    public int getMinCost(int enchantmentLevel)
     {
         return 15 + 9 * (enchantmentLevel - 1);
     }
 
     @Override
-    public int getMaxEnchantability(int enchantmentLevel)
+    public int getMaxCost(int enchantmentLevel)
     {
-        return super.getMaxEnchantability(enchantmentLevel) + 50;
+        return super.getMaxCost(enchantmentLevel) + 50;
     }
 
     /**
@@ -59,11 +61,11 @@ public class IncantationEnchantment extends Enchantment
      */
     public static ItemStack applyIncantation(PlayerEntity player, ItemStack heldItem, ItemStack target)
     {
-        int ilvl = EnchantmentHelper.getEnchantmentLevel(ModEnchants.incantation.get(), heldItem);
+        int ilvl = EnchantmentHelper.getItemEnchantmentLevel(ModEnchants.incantation.get(), heldItem);
         int strength = ilvl * 10 - 5;
-        EnchantmentHelper.addRandomEnchantment(player.world.getRandom(), target, strength, true);
+        EnchantmentHelper.enchantItem(player.level.getRandom(), target, strength, true);
         // damage the weapon applying the incantation. This could break it.
-        heldItem.damageItem(strength*2, player, (foo) -> {foo.sendBreakAnimation(EquipmentSlotType.MAINHAND);});
+        heldItem.hurtAndBreak(strength*2, player, (foo) -> {foo.broadcastBreakEvent(EquipmentSlotType.MAINHAND);});
         return target;
     } // end applyIncantation()
 } // end class

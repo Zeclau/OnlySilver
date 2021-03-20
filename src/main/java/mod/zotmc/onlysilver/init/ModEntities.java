@@ -15,8 +15,8 @@ public final class ModEntities
     
     public static final RegistryObject<EntityType<SilverGolemEntity>> silver_golem = 
             ENTITIES.register("silver_golem", 
-                    () -> EntityType.Builder.create(SilverGolemEntity::new, EntityClassification.MISC)
-                    .size(0.8F, 1.9F)
+                    () -> EntityType.Builder.of(SilverGolemEntity::new, EntityClassification.MISC)
+                    .sized(0.8F, 1.9F)
                     .build("silver_golem"));
     
 } // end class
