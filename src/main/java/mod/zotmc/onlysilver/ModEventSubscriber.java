@@ -17,12 +17,12 @@ import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModEntities;
 import mod.zotmc.onlysilver.init.ModTabGroups;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -36,7 +36,7 @@ public final class ModEventSubscriber
 	private static final Logger LOGGER = LogManager.getLogger(OnlySilver.MODID + " Mod Event Subscriber");
 
     /**
-     * For best inter-mod compatibility, run ore generation in a DeferredWorkQueue, per dieseiben07.
+     * For best inter-mod compatibility, run ore generation in a enqueueWork, per dieseiben07.
      * @param event
      */
     @SubscribeEvent
@@ -44,13 +44,20 @@ public final class ModEventSubscriber
     {
         OnlySilverRegistry.registerSilverPredicate(new IsOnlySilverItem());
         event.enqueueWork(() -> {
-            GlobalEntityTypeAttributes.put(ModEntities.silver_golem.get(), 
-                    SilverGolemEntity.prepareAttributes().build());
             OreGeneration.initOverworldFeatures();
         });
         LOGGER.debug("Common setup done");
     } // end onCommonSetup
 
+    /**
+     *  
+     */
+    @SubscribeEvent
+    public static void onEntityAttributeCreation( final EntityAttributeCreationEvent event)
+    {
+        event.put(ModEntities.silver_golem.get(), SilverGolemEntity.prepareAttributes().build());        
+    } // end onEntityAttributeCreation
+    
 	/**
 	 * This method will be called by Forge when it is time for the mod to register its Items.
 	 * This method will always be called after the Block registry method.
