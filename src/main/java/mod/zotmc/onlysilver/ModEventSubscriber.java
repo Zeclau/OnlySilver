@@ -13,9 +13,9 @@ import mod.zotmc.onlysilver.config.ConfigHolder;
 import mod.zotmc.onlysilver.enchant.OnlySilverLootModifiers;
 import mod.zotmc.onlysilver.entity.SilverGolemEntity;
 import mod.zotmc.onlysilver.generation.OreGeneration;
-import mod.zotmc.onlysilver.helpers.IsOnlySilverItem;
 import mod.zotmc.onlysilver.init.ModBlocks;
 import mod.zotmc.onlysilver.init.ModEntities;
+import mod.zotmc.onlysilver.init.ModItems;
 import mod.zotmc.onlysilver.init.ModTabGroups;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -42,7 +42,12 @@ public final class ModEventSubscriber
     @SubscribeEvent
     public static void onCommonSetup(final FMLCommonSetupEvent event)
     {
-        OnlySilverRegistry.registerSilverPredicate(new IsOnlySilverItem());
+        // using lambdas to make this nigh incomprehensible...
+        OnlySilverRegistry.registerSilverPredicate( 
+                t -> ModItems.ITEMS.getEntries()
+                        .stream()
+                        .anyMatch(ii -> ii.get() == t.getItem()));
+        
         event.enqueueWork(() -> {
             OreGeneration.initOverworldFeatures();
         });
