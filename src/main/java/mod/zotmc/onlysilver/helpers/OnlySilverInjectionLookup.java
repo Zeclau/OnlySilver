@@ -12,8 +12,8 @@ public class OnlySilverInjectionLookup extends InjectionTableLookup
         this.put("abandoned_mineshaft", "abandoned_mineshaft");
         this.put("desert_pyramid", "desert_pyramid");
         this.put("simple_dungeon", "simple_dungeon");
-        this.put("simple_dungeon", "stronghold_crossing");
-        this.put("simple_dungeon", "stronghold_corridor");
+        this.put("stronghold_crossing", "simple_dungeon");
+        this.put("stronghold_corridor", "simple_dungeon");
         this.put("buried_treasure", "buried_treasure");
         this.put("village_fletcher", "village_fletcher");
         this.put("village_temple", "village_temple");
