@@ -29,6 +29,7 @@ public class OnlySilverDataGenerator
         {
             gen.addProvider(new Recipes(gen));
             gen.addProvider(new OnlySilverLootTableProvider(gen));
+            gen.addProvider(new OnlySilverLootInjectorProvider(gen));
         }
      } // end gatherData()
     

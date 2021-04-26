@@ -5,10 +5,12 @@ import java.util.Collection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import mod.alexndr.simplecorelib.helpers.LootUtils;
 import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.enchant.IncantationEnchantment;
 import mod.zotmc.onlysilver.enchant.SilverAuraEnchantment;
 import mod.zotmc.onlysilver.generation.OreGeneration;
+import mod.zotmc.onlysilver.helpers.OnlySilverInjectionLookup;
 import mod.zotmc.onlysilver.helpers.Utils;
 import mod.zotmc.onlysilver.init.ModEnchants;
 import net.minecraft.entity.item.ItemEntity;
@@ -19,6 +21,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -37,7 +40,21 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public final class ForgeEventSubscriber
 {
     private static final Logger LOGGER = LogManager.getLogger(OnlySilver.MODID + " Forge Event Subscriber");
+    private static final OnlySilverInjectionLookup lootLookupMap = new OnlySilverInjectionLookup();
 
+    /**
+     * add mod loot to loot tables. Code heavily based on Botania's LootHandler, which
+     * neatly solves the problem when I couldn't figure it out.
+     */
+    @SubscribeEvent
+    public static void LootLoad(final LootTableLoadEvent event)
+    {
+        if (OnlySilverConfig.addModLootToChests)
+        {
+            LootUtils.LootLoadHandler(OnlySilver.MODID, event, lootLookupMap);
+        } // end-if config allows
+    } // end LootLoad()
+    
     /* SILVER AURA EVENTS */
     /**
      * The SilverAuraEnchantment extends the lifespan of a dropped item that is
