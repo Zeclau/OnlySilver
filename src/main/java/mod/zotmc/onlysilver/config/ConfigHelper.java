@@ -15,6 +15,7 @@ public final class ConfigHelper
     {
         // general
         OnlySilverConfig.buildSilverGolem  = ConfigHolder.SERVER.serverBuildSilverGolem.get();
+        OnlySilverConfig.addModLootToChests = ConfigHolder.SERVER.serverAddModLootToChests.get();
         
         // enchantments
         OnlySilverConfig.enableAuraEnchantment = ConfigHolder.SERVER.serverEnableAuraEnchantment.get();

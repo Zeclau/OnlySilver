@@ -17,6 +17,7 @@ public class OnlySilverConfig implements ISimpleConfig
     public static boolean enableAuraEnchantment = true;
     public static boolean enableIncantationEnchantment = true;
     public static boolean buildSilverGolem = true;
+    public static boolean addModLootToChests = true;
     
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
     public static ModOreConfig silver_cfg;

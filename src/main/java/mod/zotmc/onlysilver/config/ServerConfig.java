@@ -1,5 +1,6 @@
 package mod.zotmc.onlysilver.config;
 
+import mod.alexndr.simpleores.SimpleOres;
 import mod.zotmc.onlysilver.OnlySilver;
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -15,9 +16,15 @@ public final class ServerConfig
     final ForgeConfigSpec.BooleanValue serverEnableIncantationEnchantment;
     final ForgeConfigSpec.BooleanValue serverBuildSilverGolem;
     
+    final ForgeConfigSpec.BooleanValue serverAddModLootToChests;
+    
     ServerConfig(final ForgeConfigSpec.Builder builder)
     {
         builder.push("General");
+        serverAddModLootToChests = builder.comment("Add Only Silver items to chest loot?")
+                .translation(OnlySilver.MODID + ".config.addModLootToChests")
+                .define("AddModLootToChests", true);
+        builder.pop();
         serverBuildSilverGolem = builder.comment("Can build silver golems?")
                 .translation(OnlySilver.MODID + "options.silver_golem_assembly")
                 .define("BuildSilverGolem", true);
