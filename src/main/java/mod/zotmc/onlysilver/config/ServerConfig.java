@@ -16,7 +16,8 @@ public final class ServerConfig
     final ForgeConfigSpec.BooleanValue serverBuildSilverGolem;
     
     final ForgeConfigSpec.BooleanValue serverAddModLootToChests;
-    
+    final ForgeConfigSpec.BooleanValue serverEnableSilverOre;
+   
     ServerConfig(final ForgeConfigSpec.Builder builder)
     {
         builder.push("General");
@@ -24,23 +25,26 @@ public final class ServerConfig
                 .translation(OnlySilver.MODID + ".config.addModLootToChests")
                 .define("AddModLootToChests", true);
         serverBuildSilverGolem = builder.comment("Can build silver golems?")
-                .translation(OnlySilver.MODID + "options.silver_golem_assembly")
+                .translation(OnlySilver.MODID + "config.silver_golem_assembly")
                 .define("BuildSilverGolem", true);
         builder.pop();
         builder.push("Ore Generation");
+        serverEnableSilverOre = builder.comment("Enable silver ore generation?")
+                .translation(OnlySilver.MODID + ".config.EnableSilverOre")
+                .define("EnableSilverOre", true);
         serverSilverVeinSize = builder.comment("Silver ore vein size")
-                .translation(OnlySilver.MODID + "options.silver_vein_size")
+                .translation(OnlySilver.MODID + "config.silver_vein_size")
                 .defineInRange("SilverVeinSize",  5, 0, Integer.MAX_VALUE);
         serverSilverVeinCount = builder.comment("Silver ore vein count per chunk")
-                .translation(OnlySilver.MODID + "options.silver_vein_count")
+                .translation(OnlySilver.MODID + "config.silver_vein_count")
                 .defineInRange("SilverVeinCount",  8, 0, Integer.MAX_VALUE);
         serverSilverBottomHeight = builder
                 .comment("Silver ore minimum height")
-                .translation(OnlySilver.MODID + ".options.silver_min_height")
+                .translation(OnlySilver.MODID + ".config.silver_min_height")
                 .defineInRange("SilverBottomHeight", 0, 1, 255);
         serverSilverMaxHeight = builder
                 .comment("Silver ore maximum height")
-                .translation(OnlySilver.MODID + ".options.silver_max_height")
+                .translation(OnlySilver.MODID + ".config.silver_max_height")
                 .defineInRange("SilverMaxHeight", 42, 1, 255);
         builder.pop();
         builder.push("Enchantments");

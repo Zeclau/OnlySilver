@@ -206,7 +206,8 @@ public final class ForgeEventSubscriber
     @SubscribeEvent(priority=EventPriority.HIGH)
     public static void onBiomeLoading(BiomeLoadingEvent evt)
     {
-        if (evt.getCategory() != Biome.Category.THEEND && evt.getCategory() != Biome.Category.NETHER)
+        if (evt.getCategory() != Biome.Category.THEEND && evt.getCategory() != Biome.Category.NETHER
+            && OnlySilverConfig.enableSilverOre)
         {
             OreGeneration.generateOverworldOres(evt);
         }

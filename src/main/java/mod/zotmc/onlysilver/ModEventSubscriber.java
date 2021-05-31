@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import mod.zotmc.onlysilver.api.OnlySilverRegistry;
 import mod.zotmc.onlysilver.config.ConfigHelper;
 import mod.zotmc.onlysilver.config.ConfigHolder;
+import mod.zotmc.onlysilver.config.OnlySilverConfig;
 import mod.zotmc.onlysilver.enchant.OnlySilverLootModifiers;
 import mod.zotmc.onlysilver.entity.SilverGolemEntity;
 import mod.zotmc.onlysilver.generation.OreGeneration;
@@ -48,9 +49,12 @@ public final class ModEventSubscriber
                         .stream()
                         .anyMatch(ii -> ii.get() == t.getItem()));
         
-        event.enqueueWork(() -> {
-            OreGeneration.initOverworldFeatures();
-        });
+        if (OnlySilverConfig.enableSilverOre)
+        {
+            event.enqueueWork(() -> {
+                OreGeneration.initOverworldFeatures();
+            });
+        }
         LOGGER.debug("Common setup done");
     } // end onCommonSetup
 
